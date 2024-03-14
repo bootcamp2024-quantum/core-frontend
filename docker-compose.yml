@@ -1,0 +1,9 @@
+services:
+  frontend:
+    container_name: core-frontend-container
+    image: core-frontend-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 7777:7777
