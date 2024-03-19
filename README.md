@@ -18,6 +18,14 @@ gh repo clone bootcamp2024-quantum/core-frontend
 
 ---
 
+# Preparations
+
+## .env
+
+Before you start, you must ensure that your .env file exists and looks like [.env.example](.env.example) with all keys and their values. Otherwise, your project may work incorrectly or not work at all.
+
+---
+
 # Development
 
 ### Local Development
