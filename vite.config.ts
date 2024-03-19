@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    port: 7777, // This is the port which will be used in docker
+    port: +process.env.PORT!, // This is the port which will be used in docker
   },
 });
