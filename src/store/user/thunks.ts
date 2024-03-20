@@ -1,11 +1,16 @@
 import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
-import { Token, User } from "../../types";
+import { AxiosError } from "axios";
 import { setToken } from "../../axios";
+import { UserCredentials } from "../../types";
+import { UserState } from "./slice";
 // import { axiosInstance } from "../../axios";
 
 export const login = createAsyncThunk<
-  { user: User; token: Token },
-  { email: string; password: string }
+  Pick<UserState, "user" | "token">,
+  UserCredentials,
+  {
+    rejectValue: string;
+  }
 >("user/login", async ({ email, password }, thunkAPI) => {
   try {
     console.log(email, password);
@@ -29,7 +34,9 @@ export const login = createAsyncThunk<
 
     return { user, token };
   } catch (err) {
-    return thunkAPI.rejectWithValue(err);
+    return thunkAPI.rejectWithValue(
+      (err as AxiosError).message || "Uncaught error"
+    );
   }
 });
 

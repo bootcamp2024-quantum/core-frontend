@@ -1,10 +1,10 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Login } from "../../types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../schemas";
-import styles from "./LoginPageStyles.module.css";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../hooks/redux";
-import { login } from "../../store/user/userOperations";
+import { loginSchema } from "../../schemas";
+import { login } from "../../store/user/thunks";
+import { UserCredentials } from "../../types";
+import styles from "./LoginPageStyles.module.css";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -13,10 +13,10 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Login>({
+  } = useForm<UserCredentials>({
     resolver: yupResolver(loginSchema),
   });
-  const onSubmit: SubmitHandler<Login> = (data) => {
+  const onSubmit: SubmitHandler<UserCredentials> = (data) => {
     dispatch(login(data));
     reset();
   };

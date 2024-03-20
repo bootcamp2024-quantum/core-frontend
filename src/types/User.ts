@@ -4,3 +4,5 @@ export type User = {
   email: string;
   avatar: string | null;
 };
+
+export type UserCredentials = { email: string; password: string };

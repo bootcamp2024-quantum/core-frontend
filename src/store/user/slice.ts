@@ -1,11 +1,8 @@
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "./userOperations";
-import { User } from "../../types/User";
-import type { AsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { Token } from "../../types";
-
-type GenericAsyncThunk = AsyncThunk<unknown, unknown, any>;
-type RejectedAction = ReturnType<GenericAsyncThunk["rejected"]>;
+import { User } from "../../types/User";
+import { login } from "./thunks";
 
 export interface UserState {
   user: User;
@@ -18,14 +15,14 @@ export interface UserState {
 
 const initialState: UserState = {
   user: { id: "", name: "", email: "", avatar: null },
-  token: { access: null, refresh: null },
+  token: { access: undefined, refresh: undefined },
   isLoggedIn: false,
   isLoading: false,
   isRefreshing: false,
   error: null,
 };
 
-export const authSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
@@ -45,20 +42,19 @@ export const authSlice = createSlice({
           state.error = null;
         }
       )
-      .addCase(login.rejected, onReject)
+      .addCase(login.rejected, (state: UserState, action) => {
+        state.isLoading = false;
+        state.error = action.payload!;
+      })
       .addCase(login.pending, onPending);
   },
 });
 
-function onReject(state: UserState, action: RejectedAction) {
-  state.isLoading = false;
-  state.error = action.payload as string;
-}
 function onPending(state: UserState) {
   state.isLoading = true;
   state.error = null;
 }
 
-const userReducer = authSlice.reducer;
+const userReducer = userSlice.reducer;
 
 export default userReducer;

@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import userReducer from "./user/userSlice";
+import userReducer from "./user/slice";
 
 const userPersistConfig = {
   key: "user",

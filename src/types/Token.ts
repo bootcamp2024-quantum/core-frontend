@@ -1,1 +1,1 @@
-export type Token = { access: string | null; refresh: string | null };
+export type Token = { access?: string; refresh?: string };
