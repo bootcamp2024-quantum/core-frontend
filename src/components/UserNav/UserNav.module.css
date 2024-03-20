@@ -1,0 +1,28 @@
+.authNavList {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    border-radius: 24px;
+    width: 254px;
+    height: 53px;
+    background: #f4f4f4;
+}
+
+.authNavList li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    padding: 12px 20px;
+    width: 125px;
+    height: 53px;
+    font-weight: 400;
+    /* font-size: 24px; */
+    color: #000;
+}
+
+.authNavList li:hover,
+.authNavList li:focus,
+.authNavList li:active {
+    background: #dedede;
+}

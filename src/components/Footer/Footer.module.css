@@ -1,0 +1,49 @@
+.footer {
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footerContent {
+    display: flex;
+    width: 1352px;
+    height: 500px;
+}
+
+.footerContactBlock {
+    width: 676px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footerContentTitle {
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.footerContentText {
+    font-weight: 400;
+    font-size: 20px;
+    max-width: 516px;
+}
+
+.contactsList li span{
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.footerAdditionalBlock {
+    display: flex;
+    flex-direction: column;
+    width: 463px;
+    height: 83px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.additionalBlockNav {
+    display: flex;
+    gap: 23px;
+}

@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 80px 24px 80px;
+    height: 117px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    width: 89px;
+    height: 53px;
+}
+
+.headerMenu {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    border-radius: 24px;
+    width: 624px;
+    height: 53px;
+    padding: 0;
+    align-items: center;
+    background: #f4f4f4;
+}
+
+.headerMenu li {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerMenu li:hover,
+.headerMenu li:focus {
+    border-radius: 24px;
+    padding: 12px 20px;
+    height: 53px;
+    background: #dedede;
+}
+
+.active {
+    border-radius: 24px;
+    padding: 12px 20px;
+    height: 53px;
+    background: #dedede;
+}
+
+.searchBarBtn {
+    padding: 10px 20px;
+    width: 155px;
+    border: none;
+    color: inherit;
+    background-color: transparent;
+    font-weight: 400;
+}

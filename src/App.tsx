@@ -1,35 +1,29 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Layout from './components/Layout/Layout';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
+import RoadmapsPage from './pages/RoadmapsPage';
+import AboutUsPage from './pages/AboutUsPage';
+import { ROUTES } from './components/routes';
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path={ROUTES.HOME} element={<HomePage />} />
+            <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+            <Route path={ROUTES.REGISTER} element={<RegistrationPage />} />
+            <Route path={ROUTES.ROADMAPS} element={<RoadmapsPage />} />
+            <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </Router>
   );
-}
+};
 
 export default App;
