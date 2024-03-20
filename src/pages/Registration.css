@@ -1,0 +1,26 @@
+.divFormRegister {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+};
+
+.register-title {
+    display: flex;
+    justify-content: center;
+}
+
+.register-input {
+    padding: 4px;
+    margin: 4px;
+    border-radius: 6px;
+}
+
+.register-btn {
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.register-notification {
+    color: red;
+    font-size: 14px;
+}
