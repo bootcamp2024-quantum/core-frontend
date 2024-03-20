@@ -10,7 +10,7 @@ interface PrivateRouteProps {
 }
 
 export default function PrivateRoute({ children }: PrivateRouteProps) {
-  const  token  = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectIsLoggedIn);
 
   return token ? children : <Navigate to={ROUTES.LOGIN} />;
 }

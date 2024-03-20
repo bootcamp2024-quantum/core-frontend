@@ -54,7 +54,7 @@ const Header: React.FC = () => {
                     <ul className={css.headerNavMenu} style={{ display: isNavVisible ? 'flex' : 'none' }}>
                         {navItems.map((item, index) => (
                             <li key={index} className={location.pathname === item.route ? css.active : ''}>
-                                <NavLink to={item.route}>{item.text}</NavLink>
+                                <NavLink to={item.route} className={css.navMenuItem}>{item.text}</NavLink>
                             </li>
                         ))}
                         <li>

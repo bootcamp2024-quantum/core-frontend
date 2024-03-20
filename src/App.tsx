@@ -1,15 +1,16 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { ROUTES } from './components/routes';
 import Layout from './components/Layout/Layout';
-import HomePage from './pages/HomePage';
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegistrationPage from './pages/RegistrationPage';
-import RoadmapsPage from './pages/RoadmapsPage';
-import AboutUsPage from './pages/AboutUsPage';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'))
+const RegistrationPage = lazy(() => import('./pages/RegistrationPage'))
+const RoadmapsPage = lazy(() => import('./pages/RoadmapsPage'))
+const AboutUsPage = lazy(() => import('./pages/AboutUsPage'))
 
 const App: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const App: React.FC = () => {
             <Route path={ROUTES.ROADMAPS} element={<PrivateRoute><RoadmapsPage /></PrivateRoute>} />
           </Route>
           <Route path={ROUTES.LOGIN} element={<PublicRoute><LoginPage /></PublicRoute>} />
-          <Route path={ROUTES.REGISTER} element={<PublicRoute restricted={true}><RegistrationPage /></PublicRoute>} />    
+          <Route path={ROUTES.REGISTER} element={<PublicRoute><RegistrationPage /></PublicRoute>} />
         </Routes>
       </Suspense>
     </Router>
