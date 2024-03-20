@@ -47,23 +47,23 @@ const Header: React.FC = () => {
     return (
         <header className={css.header}>
             <NavLink to={ROUTES.HOME} className={css.logo}>logo</NavLink>
-            <div>
+            <div className={css.headerMenu}>
                 {isSearchVisible ? (
                     <SearchBar onClose={handleSearchClose} />
                 ) : (
-                    <ul className={css.headerMenu} style={{ display: isNavVisible ? 'flex' : 'none' }}>
+                    <ul className={css.headerNavMenu} style={{ display: isNavVisible ? 'flex' : 'none' }}>
                         {navItems.map((item, index) => (
                             <li key={index} className={location.pathname === item.route ? css.active : ''}>
                                 <NavLink to={item.route}>{item.text}</NavLink>
                             </li>
                         ))}
                         <li>
-                            <button type="button" className={css.searchBarBtn} onClick={handleSearchClick}>Search</button>
+                            <button type="button" className={css.searchBarBtn} onClick={handleSearchClick}>Search<span>icon</span> </button>
                         </li>
                     </ul>
-                )}
+                )}            
+                {isAuthenticated ? <UserNav /> : <AuthNav />}
             </div>
-            {isAuthenticated ? <UserNav /> : <AuthNav />}
         </header>
     );
 };

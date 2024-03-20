@@ -1,28 +1,51 @@
 .authNavList {
     display: flex;
     list-style: none;
-    gap: 20px;
-    border-radius: 24px;
-    width: 254px;
-    height: 53px;
-    background: #f4f4f4;
+    gap: 16px;
 }
 
-.authNavList li {
+.loginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;    
+    padding: 20px 32px;
+    width: 126px;
+    height: 64px;
+    box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.15);
+    background: #fff;
+    cursor: pointer;
+}
+
+.loginBtn:hover,
+.loginBtn:focus {
+    border: 1px solid #f8bd00;
+}
+
+.loginBtn:active {
+    border: none;
+    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.signUpBtn {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 24px;
-    padding: 12px 20px;
-    width: 125px;
-    height: 53px;
-    font-weight: 400;
-    /* font-size: 24px; */
-    color: #000;
+    padding: 20px 32px;
+    width: 142px;
+    height: 64px;
+    box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.15);
+    background: #f8bd00;
+    cursor: pointer;
 }
 
-.authNavList li:hover,
-.authNavList li:focus,
-.authNavList li:active {
-    background: #dedede;
+.signUpBtn:hover,
+.signUpBtn:focus {
+    background: #f8a400;
+}
+
+.signUpBtn:active {
+    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
+    background: #f8a400;
 }

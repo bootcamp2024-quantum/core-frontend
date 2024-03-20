@@ -8,8 +8,8 @@ const AuthNav: React.FC = () => {
     return (
         <div>
             <ul className={css.authNavList}>
-                <li><Link to={ROUTES.LOGIN}>Log in</Link></li>
-                <li><Link to={ROUTES.REGISTER}>Sign up</Link></li>
+                <li className={css.loginBtn}><Link to={ROUTES.LOGIN}>Log in</Link></li>
+                <li className={css.signUpBtn}><Link to={ROUTES.REGISTER}>Sign up</Link></li>
             </ul>
         </div>
     );

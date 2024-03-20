@@ -11,25 +11,11 @@ const Footer: React.FC = () => {
         { route: ROUTES.HOME, text: 'Cookie policy' }
     ];
 
-    const contactItems = [
-        { route: ROUTES.HOME, icon: '$', text: 'Phone' },
-        { route: ROUTES.HOME, icon: '$', text: 'Mail' },
-        { route: ROUTES.HOME, icon: '$', text: 'Address' }
-    ];
-
     return (
         <footer className={css.footer}>
             <div className={css.footerContent}>
                 <div className={css.footerContactBlock}>
                     <h2 className={css.footerContentTitle}>Contact us</h2>
-                    <p className={css.footerContentText}>Got questions or feedback? Reach out to us! Our team is here to assist you.</p>
-                    <ul className={css.contactsList}>
-                        {contactItems.map((item, index) => (
-                            <li key={index}>
-                                <Link to={item.route}><span>{item.icon}</span>{item.text}</Link>
-                            </li>
-                        ))}
-                    </ul>
                 </div>
                 <div className={css.footerFeedbackBlock}>
                     <h2 className={css.footerContentTitle}>Leave us a feedback</h2>
