@@ -1,12 +1,10 @@
-import { useState } from "react";
-import "./App.css";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/logo.svg";
+import { Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { ROUTES } from './components/routes';
 import Layout from './components/Layout/Layout';
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
+import LoginPage from "./pages/LoginPage/LoginPage";
 import RegistrationPage from './pages/RegistrationPage';
 import RoadmapsPage from './pages/RoadmapsPage';
 import AboutUsPage from './pages/AboutUsPage';
@@ -23,7 +21,7 @@ const App: React.FC = () => {
             <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
             <Route path={ROUTES.ROADMAPS} element={<PrivateRoute><RoadmapsPage /></PrivateRoute>} />
           </Route>
-          <Route path={ROUTES.LOGIN} element={<PublicRoute restricted={true}><LoginPage /></PublicRoute>} />
+          <Route path={ROUTES.LOGIN} element={<PublicRoute><LoginPage /></PublicRoute>} />
           <Route path={ROUTES.REGISTER} element={<PublicRoute restricted={true}><RegistrationPage /></PublicRoute>} />    
         </Routes>
       </Suspense>

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { selectToken } from "../store/selectors";
+import { selectToken } from "../store/user/selectors";
 
 interface PublicRouteProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface PublicRouteProps {
 }
 
 export default function PublicRoute({ children, restricted }: PublicRouteProps) {
-  const { token } = useSelector(selectToken);
+  const token = useSelector(selectToken);
 
   if (token && restricted) {
     return (
