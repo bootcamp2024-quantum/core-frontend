@@ -1,5 +1,7 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import "./App.css";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/logo.svg";
 
 import { ROUTES } from './components/routes';
 import Layout from './components/Layout/Layout';
