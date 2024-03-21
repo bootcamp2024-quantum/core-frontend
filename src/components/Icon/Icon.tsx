@@ -1,5 +1,5 @@
-import sprite from "../../images/sprite.svg";
-
+import sprite from '../../images/sprite.svg';
+import styles from './Icon.module.css';
 interface IconProps {
   id: string;
   size?: number;
@@ -16,11 +16,11 @@ const Icon = ({
   fill,
   stroke,
   onClick,
-  className = "",
-  boxStyles = "",
+  className = '',
+  boxStyles = '',
 }: IconProps) => {
   return (
-    <div onClick={onClick} className={boxStyles}>
+    <div onClick={onClick} className={`${styles.box} ${boxStyles}`}>
       <svg
         className={className}
         width={size}

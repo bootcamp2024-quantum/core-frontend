@@ -1,56 +1,36 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../hooks/redux";
-import { loginSchema } from "../../schemas";
-import { login } from "../../store/user/thunks";
-import { UserCredentials } from "../../types";
-import styles from "./LoginPage.module.css";
-import TextInput from "../../components/TextInput";
-import { useState } from "react";
-import Icon from "../../components/Icon";
-import Button from "../../components/Button";
+import Button from '../../components/Button';
+import Icon from '../../components/Icon';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import MaxWidthWraper from '../../components/MaxWidthWraper';
+import OverlinedText from '../../components/OverlinedText';
+import PageTitle from '../../components/PageTitle';
+import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
-  const [shouldShowPassword, setShouldShowPassword] = useState(false);
-  const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<UserCredentials>({
-    resolver: yupResolver(loginSchema),
-  });
-  const onSubmit: SubmitHandler<UserCredentials> = (data) => {
-    dispatch(login(data));
-    reset();
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <TextInput
-        register={register("email")}
-        placeholder="E-mail"
-        error={errors.email?.message}
-      />
-      <TextInput
-        register={register("password")}
-        placeholder="Password"
-        type={shouldShowPassword ? "text" : "password"}
-        error={errors.password?.message}
-        icon={
-          <Icon
-            id="eye"
-            boxStyles={styles.iconBox}
-            onClick={() => {
-              setShouldShowPassword((p) => !p);
-            }}
+    <MaxWidthWraper className={styles.wraper}>
+      <div className={styles.container}>
+        <PageTitle>Log in</PageTitle>
+        <LoginForm />
+        <Button type="button" variant="link">
+          Forgot password
+        </Button>
+        <OverlinedText>or log in with</OverlinedText>
+        <div className={styles.buttonsGroup}>
+          <Button variant="secondary" size="xsm" icon={<Icon id="google" />} />
+          <Button
+            variant="secondary"
+            size="xsm"
+            className={styles.linkedinButton}
+            icon={<Icon id="linkedin" />}
           />
-        }
-      />
+        </div>
 
-      <Button type="submit" text="Submit" size="lg" style="primary" />
-    </form>
+        <p className={styles.text}>
+          Don't have an account? <Button variant="link">SIGN UP</Button>
+        </p>
+      </div>
+    </MaxWidthWraper>
   );
 };
 
