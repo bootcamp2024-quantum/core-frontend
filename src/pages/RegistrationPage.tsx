@@ -15,6 +15,9 @@ interface FormData {
 
 export const FormRegistration = () => {
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
+const FormRegistration = () => {
+    
+    const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
   const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -145,3 +148,6 @@ export const FormRegistration = () => {
     </>
   );
 };
+
+
+export default FormRegistration;

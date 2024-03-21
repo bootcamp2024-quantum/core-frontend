@@ -1,37 +1,33 @@
-import { useState } from "react";
-import "./App.css";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/logo.svg";
-import { FormRegistration } from "./pages/RegistrationPage";
+import { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0);
+import { ROUTES } from './components/routes';
+import Layout from './components/Layout/Layout';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
+const HomePage = lazy(() => import('./pages/HomePage'))
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'))
+const FormRegistration = lazy(() => import('./pages/RegistrationPage'))
+const RoadmapsPage = lazy(() => import('./pages/RoadmapsPage'))
+const AboutUsPage = lazy(() => import('./pages/AboutUsPage'))
+
+const App = () => {
   return (
-    <>
-      <FormRegistration />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path={ROUTES.HOME} element={<HomePage />} />
+            <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
+            <Route path={ROUTES.ROADMAPS} element={<PrivateRoute><RoadmapsPage /></PrivateRoute>} />
+          </Route>
+          <Route path={ROUTES.LOGIN} element={<PublicRoute><LoginPage /></PublicRoute>} />
+          <Route path={ROUTES.REGISTER} element={<PublicRoute><FormRegistration /></PublicRoute>} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
-}
+};
 
 export default App;
