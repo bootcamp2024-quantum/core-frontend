@@ -1,0 +1,57 @@
+.authNavList {
+    display: flex;
+    list-style: none;
+    gap: 16px;
+}
+
+.loginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    border: none;
+    width: 126px;
+    height: 64px;
+    box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.15);
+    background: var(--white);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.loginBtn:hover,
+.loginBtn:focus {
+    border: 1px solid var(--secondary-btn-border-hover);
+}
+
+.loginBtn:active {
+    border: none;
+    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.signUpBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    padding: 20px 32px;
+    width: 142px;
+    height: 64px;
+    box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.15);
+    background: var(--main-btn-normal-background);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.signUpBtn:hover,
+.signUpBtn:focus {
+    background: var(--main-btn-hover-background);
+}
+
+.signUpBtn:active {
+    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
+    background: var(--main-btn-hover-background);
+}

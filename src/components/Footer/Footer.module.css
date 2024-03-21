@@ -1,0 +1,25 @@
+.footer {
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footerContentTitle {
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.footerAdditionalBlock {
+    display: flex;
+    flex-direction: column;
+    max-width: 463px;
+    height: 83px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.additionalBlockNav {
+    display: flex;
+    gap: 23px;
+}
