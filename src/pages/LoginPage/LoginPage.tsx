@@ -8,7 +8,7 @@ import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
   return (
-    <MaxWidthWrapper className={styles.wraper}>
+    <MaxWidthWrapper className={styles.wrapper}>
       <div className={styles.container}>
         <PageTitle>Log in</PageTitle>
         <LoginForm />
