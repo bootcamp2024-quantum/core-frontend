@@ -8,7 +8,7 @@ import PublicRoute from './components/PublicRoute';
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'))
-const RegistrationPage = lazy(() => import('./pages/RegistrationPage'))
+// const RegistrationPage = lazy(() => import('./pages/RegistrationPage'))
 const RoadmapsPage = lazy(() => import('./pages/RoadmapsPage'))
 const AboutUsPage = lazy(() => import('./pages/AboutUsPage'))
 
@@ -23,7 +23,7 @@ const App = () => {
             <Route path={ROUTES.ROADMAPS} element={<PrivateRoute><RoadmapsPage /></PrivateRoute>} />
           </Route>
           <Route path={ROUTES.LOGIN} element={<PublicRoute><LoginPage /></PublicRoute>} />
-          <Route path={ROUTES.REGISTER} element={<PublicRoute><RegistrationPage /></PublicRoute>} />
+          {/* <Route path={ROUTES.REGISTER} element={<PublicRoute><RegistrationPage /></PublicRoute>} /> */}
         </Routes>
       </Suspense>
     </Router>
