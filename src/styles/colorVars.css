@@ -1,0 +1,16 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --main-background: #fafafa;
+    --main-text-color: #2a2a2a;
+    --main-btn-normal-background: #f8bd00;
+    --main-btn-hover-background: #f8a400;
+    --main-button-disabled-background: #f4ecdf;
+    --secondary-btn-disabled-background: #cdcdcd;
+    --secondary-btn-border-hover: #f8bd00;
+    --input-placeholder-normal: #a9a9a9;
+    --input-error-color: #e33629;
+    --input-border-normal: #f8bd00;
+    --input-border-hover: #f8a400;
+    --main-violet-color: #9f02b8;
+}

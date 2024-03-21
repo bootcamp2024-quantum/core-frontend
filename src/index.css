@@ -1,26 +1,25 @@
+@import '@fontsource-variable/montserrat';
+@import './styles/colorVars.css';
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: #000;
-  background: #fafafa;
-
+  font-family: 'Montserrat Variable', sans-serif;
   font-synthesis: none;
+  background-color: var(--main-background);
+  color: var(--main-text-color);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
+  font-family: 'Montserrat Variable', sans-serif;
   margin: 0;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;  
+  padding: 0;
 }
 
 img {

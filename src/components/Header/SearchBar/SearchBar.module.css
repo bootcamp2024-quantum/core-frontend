@@ -3,33 +3,32 @@
 }
 
 .input {
-    border: 1px solid #f8bd00;
+    border: 1px solid var(--input-border-normal);
     border-radius: 20px;
     padding: 20px;
     width: 592px;
     height: 64px;
     margin-right: 96px;
     box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.15);
-    background: #fff;
-    color: #000;
+    background: var(--white);
+    color: var(--main-text-color);
 }
 
 .input::placeholder {
-    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: #a9a9a9;
+    color: var(--input-placeholder-normal);
 }
 
 .input:hover,
 .input:focus {
     outline: none;
     color: inherit;
-    border: 1px solid #f8a400;
+    border: 1px solid var(--input-border-hover);
 }
 
 .input:active {
-    border: 1px solid #f8a400;
+    border: 1px solid var(--input-border-hover);
     box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
     color: inherit;
 }
@@ -52,5 +51,5 @@
     width: 28px;
     height: 28px;
     fill: none;
-    stroke: #2a2a2a;
+    stroke: var(--main-text-color);
 }
