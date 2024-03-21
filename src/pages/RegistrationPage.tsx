@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { schema } from "../../src/schemas/registerSchema";
+// import axios from "axios";
 import css from "./Registration.module.css";
 
 interface FormData {
@@ -13,13 +14,7 @@ interface FormData {
 }
 
 export const FormRegistration = () => {
-    const schema = yup.object().shape({
-        username: yup.string().min(4).required("username is Required!"),
-        email: yup.string().email().required("email is Required!"),
-        password: yup.string().min(4).max(20).required(),
-        repeat_password: yup.string().oneOf([yup.ref("password"), undefined], "passwords don't match!").required(),
-    });
-
+    
     const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
     const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,22 +39,20 @@ export const FormRegistration = () => {
             formData.append('avatar', avatarFile);
             console.log(formData);
         }
+    //    try {
+    //         const response = await axios.post('server-endpoint', formData); // Відправлення POST-запиту за допомогою Axios
+    //         if (response.status === 200) {
+    //             console.log('Form submitted successfully!');
+    //             reset();
+    //         } else {
+    //             console.error('Error submitting form:', response.statusText);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error submitting form:', error.message);
+    //     }
 
-        // try {
-        //     const response = await fetch('server-endpoint', {
-        //         method: 'POST',
-        //         body: formData,
-        //     });
-        //     if (response.ok) {
-        //         console.log('Form submitted successfully!');
-        //         reset();
-        //     } else {
-        //         console.error('Error submitting form:', response.statusText);
-        //     }
-        // } catch (error) {
-        //     console.error('Error submitting form:', error.message);
-        // }
-
+    //     reset();
+    // };
         reset();
     };
 
