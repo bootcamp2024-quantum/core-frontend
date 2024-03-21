@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 360px;
+}
+
+.iconBox {
+  position: absolute;
+
+  top: 16px;
+  right: 20px;
+  opacity: 0.8;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: opacity 250ms linear;
+}
+
+.iconBox:hover,
+.iconBox:focus,
+.iconBox:active {
+  opacity: 1;
+}

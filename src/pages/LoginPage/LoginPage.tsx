@@ -4,9 +4,14 @@ import { useAppDispatch } from "../../hooks/redux";
 import { loginSchema } from "../../schemas";
 import { login } from "../../store/user/thunks";
 import { UserCredentials } from "../../types";
-import styles from "./LoginPageStyles.module.css";
+import styles from "./LoginPage.module.css";
+import TextInput from "../../components/TextInput";
+import { useState } from "react";
+import Icon from "../../components/Icon";
+import Button from "../../components/Button";
 
 const LoginPage = () => {
+  const [shouldShowPassword, setShouldShowPassword] = useState(false);
   const dispatch = useAppDispatch();
   const {
     register,
@@ -23,31 +28,28 @@ const LoginPage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <label className={styles.label}>
-        Email
-        <input
-          {...register("email")}
-          className={styles.input}
-          placeholder="email"
-          type="text"
-          id="email"
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </label>
+      <TextInput
+        register={register("email")}
+        placeholder="E-mail"
+        error={errors.email?.message}
+      />
+      <TextInput
+        register={register("password")}
+        placeholder="Password"
+        type={shouldShowPassword ? "text" : "password"}
+        error={errors.password?.message}
+        icon={
+          <Icon
+            id="eye"
+            boxStyles={styles.iconBox}
+            onClick={() => {
+              setShouldShowPassword((p) => !p);
+            }}
+          />
+        }
+      />
 
-      <label className={styles.label}>
-        Password
-        <input
-          {...register("password")}
-          className={styles.input}
-          placeholder="password"
-          type="text"
-          id="password"
-        />
-        {errors.password && <p>{errors.password.message}</p>}
-      </label>
-
-      <button type="submit">Sign in</button>
+      <Button type="submit" text="Submit" size="lg" style="primary" />
     </form>
   );
 };
