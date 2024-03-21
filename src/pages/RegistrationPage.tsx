@@ -13,7 +13,7 @@ interface FormData {
     avatar?: File;
 }
 
-export const FormRegistration = () => {
+const FormRegistration = () => {
     
     const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
@@ -83,4 +83,4 @@ export const FormRegistration = () => {
     );
 };
 
-
+export default FormRegistration;
