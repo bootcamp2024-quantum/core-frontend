@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/logo.svg";
+import { FormRegistration } from "./pages/RegistrationPage";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+      <FormRegistration />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
