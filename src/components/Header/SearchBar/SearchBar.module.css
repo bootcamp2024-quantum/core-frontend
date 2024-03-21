@@ -36,11 +36,21 @@
 
 .button {
     position: absolute;
-    top: 20px;
+    top: 17px;
     right: 116px;
     width: 28px;
     height: 28px;
     display: block;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    border: none;
+}
+
+.searchIcon {
+    display: block;
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: #2a2a2a;
 }

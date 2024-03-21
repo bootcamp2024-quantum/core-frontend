@@ -12,7 +12,7 @@ const RegistrationPage = lazy(() => import('./pages/RegistrationPage'))
 const RoadmapsPage = lazy(() => import('./pages/RoadmapsPage'))
 const AboutUsPage = lazy(() => import('./pages/AboutUsPage'))
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>

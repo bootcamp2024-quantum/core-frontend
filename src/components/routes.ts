@@ -4,6 +4,5 @@ export const ROUTES = {
   ABOUT_US: "/about-us",
   LOGIN: "/login",
   REGISTER: "/register",
-  LOGOUT: "/",
   PROFILE: '/user'
 };

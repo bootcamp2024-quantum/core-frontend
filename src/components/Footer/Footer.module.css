@@ -12,7 +12,7 @@
 .footerAdditionalBlock {
     display: flex;
     flex-direction: column;
-    width: 463px;
+    max-width: 463px;
     height: 83px;
     justify-content: space-between;
     align-items: center;

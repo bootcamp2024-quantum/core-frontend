@@ -1,10 +1,10 @@
-.authNavList {
+.userNavList {
     display: flex;
     list-style: none;
     gap: 16px;
 }
 
-.authNavList li {
+.userNavList li {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,12 +17,12 @@
     cursor: pointer;
 }
 
-.authNavList li:hover,
-.authNavList li:focus {
+.userNavList li:hover,
+.userNavList li:focus {
     border: 1px solid #f8bd00;
 }
 
-.authNavList li:active {
+.userNavList li:active {
     border: none;
     box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
 }

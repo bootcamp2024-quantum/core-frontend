@@ -7,12 +7,8 @@
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 20px;
-    width: 89px;
-    height: 53px;
+    width: 200px;
+    height: 72px;
 }
 
 .headerMenu {
@@ -68,4 +64,12 @@
     font-size: 20px;
     line-height: 1.5;
     color: #2a2a2a;
+}
+
+.searchIcon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #2a2a2a;
 }

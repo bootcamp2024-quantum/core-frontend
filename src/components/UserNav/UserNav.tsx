@@ -4,15 +4,15 @@ import { ROUTES } from '../routes';
 
 import css from './UserNav.module.css';
 
-const AuthNav: React.FC = () => {
+const UserNav= () => {
   return (
     <div>
-      <ul className={css.authNavList}>
+      <ul className={css.userNavList}>
         <li><Link to={ROUTES.PROFILE}>Profile</Link></li>
-        <li><Link to={ROUTES.LOGOUT}>Log out</Link></li>
+        <li><Link to={ROUTES.HOME}>Log out</Link></li>
       </ul>
     </div>
   );
 };
 
-export default AuthNav;
+export default UserNav;

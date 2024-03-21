@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import sprite from '../../../images/sprite.svg'
+
 import css from "./SearchBar.module.css";
 
 interface SearchBarProps {
@@ -29,7 +31,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
           placeholder="What are you looking for?"
         />
         <button type="submit" className={css.button} onClick={handleButtonClick}>
-          <span className={css.buttonLabel}>icon</span>
+          <svg className={css.searchIcon}>
+            <use xlinkHref={`${sprite}#search`} />
+          </svg>
         </button>
       </form>
     </div>

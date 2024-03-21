@@ -4,7 +4,7 @@ import { ROUTES } from '../routes';
 
 import css from './AuthNav.module.css';
 
-const AuthNav: React.FC = () => {
+const AuthNav = () => {
     return (
         <div>
             <ul className={css.authNavList}>

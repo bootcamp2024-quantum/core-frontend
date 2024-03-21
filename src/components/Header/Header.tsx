@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from "../UserNav/UserNav";
 import SearchBar from './SearchBar/SearchBar'
 import { ROUTES } from '../routes';
+import sprite from '../../images/sprite.svg'
+import logo from '../../images/logo/logo-1x.png';
+import logo2x from '../../images/logo/logo-2x.png';
+import { selectIsLoggedIn } from "../../store/user/selectors";
 
 import css from './Header.module.css';
 
-const Header: React.FC = () => {
-    const isAuthenticated = false;
+const Header = () => {
+    const isAuthenticated = useSelector(selectIsLoggedIn);
     const location = useLocation();
     const [isSearchVisible, setIsSearchVisible] = useState(false);
     const [isNavVisible, setIsNavVisible] = useState(true);
@@ -44,9 +49,16 @@ const Header: React.FC = () => {
         };
     }, []);
 
+    const dpr = window.devicePixelRatio || 1;
+
+    const logoImage = dpr > 1 ? logo2x : logo;
+
     return (
         <header className={css.header}>
-            <NavLink to={ROUTES.HOME} className={css.logo}>logo</NavLink>
+            <NavLink to={ROUTES.HOME} className={css.logo}>
+                <img src={logoImage}
+                    alt="Career Skill Atlas logo" />
+            </NavLink>
             <div className={css.headerMenu}>
                 {isSearchVisible ? (
                     <SearchBar onClose={handleSearchClose} />
@@ -58,10 +70,14 @@ const Header: React.FC = () => {
                             </li>
                         ))}
                         <li>
-                            <button type="button" className={css.searchBarBtn} onClick={handleSearchClick}>Search<span>icon</span> </button>
+                            <button type="button" className={css.searchBarBtn} onClick={handleSearchClick}>Search<span>
+                                <svg className={css.searchIcon}>
+                                    <use xlinkHref={`${sprite}#search`} />
+                                </svg>
+                            </span> </button>
                         </li>
                     </ul>
-                )}            
+                )}
                 {isAuthenticated ? <UserNav /> : <AuthNav />}
             </div>
         </header>

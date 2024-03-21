@@ -4,7 +4,7 @@ import { ROUTES } from '../routes';
 
 import css from './Footer.module.css'
 
-const Footer: React.FC = () => {
+const Footer = () => {
     const navItems = [
         { route: ROUTES.HOME, text: 'Terms of service' },
         { route: ROUTES.HOME, text: 'Privacy policy' },
