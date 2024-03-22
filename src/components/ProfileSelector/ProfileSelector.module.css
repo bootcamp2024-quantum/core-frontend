@@ -1,0 +1,16 @@
+.selector {
+    border: 1px solid var(--input-border-normal);
+    border-radius: 20px;
+    padding: 20px;
+    width: 360px;
+    height: 64px;
+    cursor: pointer;
+}
+
+.selector:hover,
+.selector:focus,
+.selector:active {
+    border: 1px solid var(--input-border-hover);
+    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, 0.15);
+    background: var(--white);
+}
