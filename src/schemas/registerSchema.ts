@@ -9,5 +9,4 @@ export const registerSchema = yup.object().shape({
     .min(8)
     .max(20)
     .required('Password is required!'),
-  // avatar: yup.string().nullable(),
 });

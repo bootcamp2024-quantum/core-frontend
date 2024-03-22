@@ -5,15 +5,15 @@
   width: 100%;
 }
 
-.divFormRegister {
+.formWrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
 }
 
 .registerGroup {
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
   gap: 16px;
   width: 360px;
 }
@@ -43,11 +43,16 @@
   height: 184px;
   border-radius: 32px;
   border: 1.34px solid var(--input-border-normal);
-  background-image: url('../../images/sprite#user');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100px 100px;
   margin-bottom: 16px;
+  position: relative;
+}
+
+.userIcon {
+  position: absolute;
+  top: 42px;
+  right: 55px;
+  width: 100px;
+  height: 100px;
 }
 
 .photoInputBtn {

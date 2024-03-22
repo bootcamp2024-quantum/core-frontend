@@ -1,26 +1,17 @@
 .register {
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.75),
-      rgba(255, 255, 255, 0.75)
-    ),
-    url('../../images/forms/road-1x.png');
+  /* background-image: url('../../images/forms/road-1x.png'); */
   background-repeat: no-repeat;
   background-position: -218px 97px;
-  /* background-size: 333px 443px; */
   padding-bottom: 67px;
+  background-size: 666px 885px;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (min-resolution: 192dpi) {
+/* @media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
   .register {
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0.75),
-        rgba(255, 255, 255, 0.75)
-      ),
-      url('../../images/forms/road-2x.png');
-    background-size: 666px 885px;
+    background-image: url('../../images/forms/road-2x.png');
   }
-}
+} */
 
 .registerWrapper {
   display: flex;
