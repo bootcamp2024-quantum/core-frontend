@@ -1,54 +1,36 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../hooks/redux";
-import { loginSchema } from "../../schemas";
-import { login } from "../../store/user/thunks";
-import { UserCredentials } from "../../types";
-import styles from "./LoginPageStyles.module.css";
+import Button from '../../components/Button';
+import Icon from '../../components/Icon';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import MaxWidthWrapper from '../../components/MaxWidthWrapper';
+import OverlinedText from '../../components/OverlinedText';
+import PageTitle from '../../components/PageTitle';
+import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
-  const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<UserCredentials>({
-    resolver: yupResolver(loginSchema),
-  });
-  const onSubmit: SubmitHandler<UserCredentials> = (data) => {
-    dispatch(login(data));
-    reset();
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <label className={styles.label}>
-        Email
-        <input
-          {...register("email")}
-          className={styles.input}
-          placeholder="email"
-          type="text"
-          id="email"
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </label>
+    <MaxWidthWrapper className={styles.wrapper}>
+      <div className={styles.container}>
+        <PageTitle>Log in</PageTitle>
+        <LoginForm />
+        <Button type="button" variant="link">
+          Forgot password
+        </Button>
+        <OverlinedText>or log in with</OverlinedText>
+        <div className={styles.buttonsGroup}>
+          <Button variant="secondary" size="xsm" icon={<Icon id="google" />} />
+          <Button
+            variant="secondary"
+            size="xsm"
+            className={styles.linkedinButton}
+            icon={<Icon id="linkedin" />}
+          />
+        </div>
 
-      <label className={styles.label}>
-        Password
-        <input
-          {...register("password")}
-          className={styles.input}
-          placeholder="password"
-          type="text"
-          id="password"
-        />
-        {errors.password && <p>{errors.password.message}</p>}
-      </label>
-
-      <button type="submit">Sign in</button>
-    </form>
+        <p className={styles.text}>
+          Don't have an account? <Button variant="link">SIGN UP</Button>
+        </p>
+      </div>
+    </MaxWidthWrapper>
   );
 };
 

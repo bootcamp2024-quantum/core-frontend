@@ -1,0 +1,34 @@
+.wrapper {
+  margin-top: 60px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.linkedinButton {
+  background-color: rgba(10, 102, 194, 1);
+}
+
+.linkedinButton:hover,
+.linkedinButton:focus,
+.linkedinButton:active {
+  border-color: rgb(13, 86, 160);
+  background-color: rgb(13, 86, 160);
+}
+
+.text {
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
