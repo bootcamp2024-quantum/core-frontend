@@ -1,0 +1,105 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  width: 100%;
+}
+
+.divFormRegister {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.registerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 360px;
+}
+
+.registerTitle {
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--main-text-color);
+  margin-bottom: 40px;
+}
+
+.photoTitle {
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  color: var(--main-text-color);
+  margin-bottom: 16px;
+}
+
+.divPhotoThumb {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  width: 210px;
+  height: 184px;
+  border-radius: 32px;
+  border: 1.34px solid var(--input-border-normal);
+  background-image: url('../../images/sprite#user');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100px 100px;
+  margin-bottom: 16px;
+}
+
+.photoInputBtn {
+  border-radius: 24px;
+  padding: 20px 32px;
+  width: 210px;
+  height: 64px;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.customFileButton {
+  display: flex;
+  border-radius: 24px;
+  padding: 20px 32px;
+  width: 210px;
+  height: 64px;
+  box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.15);
+  background: var(--white);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--main-text-color);
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadIcon {
+  width: 33px;
+  height: 32px;
+  display: block;
+  fill: var(--main-text-color);
+}
+
+.eyeIcon {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 250ms linear;
+}
+
+.eyeIcon:hover,
+.eyeIcon:focus,
+.eyeIcon:active {
+  opacity: 1;
+}
+
+.loginButton {
+  margin: 0 auto;
+}

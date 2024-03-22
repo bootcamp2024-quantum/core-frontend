@@ -1,19 +1,84 @@
 .register {
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
-        url('../../images/forms/road-1x.png');
-    background-repeat: no-repeat;
-    background-position: -218px 97px;
-    background-size: 333px 443px;
-    padding-bottom: 67px;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.75)
+    ),
+    url('../../images/forms/road-1x.png');
+  background-repeat: no-repeat;
+  background-position: -218px 97px;
+  /* background-size: 333px 443px; */
+  padding-bottom: 67px;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min-resolution: 192dpi) {
-    .register {
-        background-image:
-            linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
-            url('../../images/forms/road-2x.png');
-        background-size: 666px 885px;
-    }
+  only screen and (min-resolution: 192dpi) {
+  .register {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.75)
+      ),
+      url('../../images/forms/road-2x.png');
+    background-size: 666px 885px;
+  }
+}
+
+.registerWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 610px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.socialWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  gap: 32px;
+}
+
+.socialBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.linkedinButton {
+  background-color: rgba(10, 102, 194, 1);
+}
+
+.linkedinButton:hover,
+.linkedinButton:focus,
+.linkedinButton:active {
+  border-color: rgb(13, 86, 160);
+  background-color: rgb(13, 86, 160);
+}
+
+.text {
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.linkLogIn {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-align: center;
+  color: rgba(248, 189, 0, 1);
+}
+
+.linkLogIn:hover,
+.linkLogInk:focus,
+.linkLogIn:active {
+  color: rgba(248, 164, 0, 1);
+}
+
+.linkLogIn:disabled {
+  color: rgba(157, 157, 157, 1);
+  text-decoration: dashed;
 }
