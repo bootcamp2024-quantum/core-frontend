@@ -1,0 +1,16 @@
+.wordСontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.line {
+  display: block;
+  width: 91px;
+  height: 1px;
+  background-color: rgba(169, 169, 169, 1);
+}
+
+.word {
+  padding: 0 12px;
+}

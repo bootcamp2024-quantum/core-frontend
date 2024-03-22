@@ -1,0 +1,160 @@
+/* DEFAULT SYLES */
+
+.default {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid transparent;
+  border-radius: 24px;
+  color: rgba(42, 42, 42, 1);
+  text-wrap: wrap;
+  font-size: 20px;
+  line-height: 1.5;
+  transition: all 250ms linear;
+}
+
+.default:hover,
+.default:focus,
+.default:active,
+.default:disabled {
+  outline: none;
+}
+
+/* BUTTON STYLES */
+
+/* PRIMARY */
+.primary {
+  background-color: rgba(248, 189, 0, 1);
+  box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.primary:hover,
+.primary:focus,
+.primary:active {
+  background-color: rgba(248, 164, 0, 1);
+}
+
+.primary:active {
+  box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.primary:disabled {
+  box-shadow: none;
+  background-color: rgba(244, 236, 223, 1);
+  color: rgba(157, 157, 157, 1);
+}
+
+/* SECONDARY */
+.secondary {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.secondary:hover,
+.secondary:focus {
+  border: 1px solid rgba(248, 189, 0, 1);
+}
+
+.secondary:active {
+  box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.secondary:disabled {
+  color: rgba(157, 157, 157, 1);
+  box-shadow: none;
+  background-color: rgba(205, 205, 205, 1);
+}
+
+/* GHOST */
+.ghost {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.ghost:hover,
+.ghost:focus {
+  border: 1px solid rgba(248, 189, 0, 1);
+}
+
+.ghost:active {
+  box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.ghost:disabled {
+  color: rgba(157, 157, 157, 1);
+}
+
+/* LINK */
+.link {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  font-weight: 600;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: rgba(248, 189, 0, 1);
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  color: rgba(248, 164, 0, 1);
+}
+
+.link:disabled {
+  color: rgba(157, 157, 157, 1);
+  text-decoration: dashed;
+}
+
+/* ICON */
+.icon {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  opacity: 0.85;
+}
+
+.icon:hover,
+.icon:focus,
+.icon:active {
+  opacity: 1;
+}
+
+.icon:disabled {
+  opacity: 0.6;
+}
+
+/* SIZES */
+
+.lg {
+  padding: 17px 0;
+  width: 320px;
+}
+
+.md {
+  padding: 16px 44px;
+  width: 210px;
+}
+
+.sm {
+  padding: 16px 31px;
+  width: 126px;
+}
+
+.xsm {
+  padding: 15px 31px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.fit {
+  padding: 0;
+  width: fit-content;
+  height: fit-content;
+}

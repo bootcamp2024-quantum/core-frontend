@@ -1,17 +1,17 @@
-import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
-import { AxiosError } from "axios";
-import { setToken } from "../../axios";
-import { UserCredentials } from "../../types";
-import { UserState } from "./slice";
+import { createAsyncThunk, nanoid } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
+import { setToken } from '../../api';
+import { UserCredentials } from '../../types';
+import { UserState } from './slice';
 // import { axiosInstance } from "../../axios";
 
 export const login = createAsyncThunk<
-  Pick<UserState, "user" | "token">,
+  Pick<UserState, 'user' | 'token'>,
   UserCredentials,
   {
     rejectValue: string;
   }
->("user/login", async ({ email, password }, thunkAPI) => {
+>('user/login', async ({ email, password }, thunkAPI) => {
   try {
     console.log(email, password);
 
@@ -35,7 +35,7 @@ export const login = createAsyncThunk<
     return { user, token };
   } catch (err) {
     return thunkAPI.rejectWithValue(
-      (err as AxiosError).message || "Uncaught error"
+      (err as AxiosError).message || 'Uncaught error',
     );
   }
 });
@@ -45,7 +45,7 @@ export const getUserById = async (id: string) => {
   const user = await Promise.resolve({
     id: id,
     name: `User${id}`,
-    email: "useremail@gmail.com",
+    email: 'useremail@gmail.com',
     avatar: null,
   });
 
