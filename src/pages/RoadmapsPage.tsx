@@ -1,9 +1,7 @@
-type Props = {}
+import React from 'react';
 
-const RoadmapsPage = (props: Props) => {
-  return (
-    <div>RoadmapsPage</div>
-  )
-}
+const RoadmapsPage = () => {
+  return <div>RoadmapsPage</div>;
+};
 
-export default RoadmapsPage
+export default RoadmapsPage;

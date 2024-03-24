@@ -1,26 +1,19 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Input from '../Input';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
+import AvatarInput from '../AvatarInput/AvatarInput';
+import { FormData } from '../../types';
 import { registerSchema } from '../../schemas/registerSchema';
 import { register } from '../../store/user/thunks';
 import { useAppDispatch } from '../../hooks/redux';
-import sprite from '../../images/sprite.svg';
 
 import css from './RegistrationForm.module.css';
 
-interface FormData {
-  name: string;
-  email: string;
-  password: string;
-  confirm_password: string;
-  avatar?: File | undefined;
-}
-
-const FormRegistration = () => {
+const RegistrationForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -46,7 +39,11 @@ const FormRegistration = () => {
 
   const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    setAvatarFile(file || null);
+    if (file) {
+      setAvatarFile(file);
+      const localPath = URL.createObjectURL(file);
+      setAvatarImagePath(localPath);
+    }
   };
 
   const handleFileButtonClick = () => {
@@ -54,6 +51,8 @@ const FormRegistration = () => {
       fileInputRef.current.click();
     }
   };
+
+  const [avatarImagePath, setAvatarImagePath] = useState<string>('');
 
   return (
     <section className={css.form}>
@@ -104,32 +103,12 @@ const FormRegistration = () => {
               }
             />
           </div>
-          <div className={css.photoBlock}>
-            <p className={css.photoTitle}>Photo(optional)</p>
-            <div className={css.divPhotoThumb}>
-              <input
-                ref={fileInputRef}
-                id="photo"
-                className={css.photoInput}
-                type="file"
-                accept="image/*"
-                onChange={handleAvatarChange}
-              />
-              <Icon id="user" className={css.userIcon} />
-            </div>
-            <button
-              type="button"
-              className={css.customFileButton}
-              onClick={handleFileButtonClick}
-            >
-              Upload
-              <span>
-                <svg className={css.uploadIcon}>
-                  <use xlinkHref={`${sprite}#upload`} />
-                </svg>
-              </span>
-            </button>
-          </div>
+          <AvatarInput
+            handleAvatarChange={handleAvatarChange}
+            handleFileButtonClick={handleFileButtonClick}
+            avatarImagePath={avatarImagePath}
+            fileInputRef={fileInputRef}
+          />
         </div>
         <div>
           <Button
@@ -146,4 +125,4 @@ const FormRegistration = () => {
   );
 };
 
-export default FormRegistration;
+export default RegistrationForm;

@@ -1,17 +1,15 @@
 .register {
-  /* background-image: url('../../images/forms/road-1x.png'); */
-  background-repeat: no-repeat;
-  background-position: -218px 97px;
   padding-bottom: 67px;
-  background-size: 666px 885px;
 }
 
-/* @media only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min-resolution: 192dpi) {
-  .register {
-    background-image: url('../../images/forms/road-2x.png');
-  }
-} */
+.road {
+  position: fixed;
+  left: -218px;
+  top: 97px;
+  width: 666px;
+  height: 885px;
+  opacity: 0.2;
+}
 
 .registerWrapper {
   display: flex;
@@ -35,14 +33,15 @@ only screen and (min-resolution: 192dpi) {
 }
 
 .linkedinButton {
-  background-color: rgba(10, 102, 194, 1);
+  background-color: #0a66c2;
+  transition: var(--transition);
 }
 
 .linkedinButton:hover,
 .linkedinButton:focus,
 .linkedinButton:active {
-  border-color: rgb(13, 86, 160);
-  background-color: rgb(13, 86, 160);
+  border-color: #0d56a0;
+  background-color: #0d56a0;
 }
 
 .text {
@@ -60,16 +59,17 @@ only screen and (min-resolution: 192dpi) {
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-align: center;
-  color: rgba(248, 189, 0, 1);
+  color: var(--main-btn-normal-background);
+  transition: var(--transition);
 }
 
 .linkLogIn:hover,
 .linkLogInk:focus,
 .linkLogIn:active {
-  color: rgba(248, 164, 0, 1);
+  color: var(--main-btn-hover-background);
 }
 
 .linkLogIn:disabled {
-  color: rgba(157, 157, 157, 1);
+  color: var(--btn-content-disabled-color);
   text-decoration: dashed;
 }

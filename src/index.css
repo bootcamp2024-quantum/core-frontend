@@ -1,5 +1,5 @@
 @import '@fontsource-variable/montserrat';
-@import './styles/colorVars.css';
+@import './styles/vars.css';
 
 :root {
   font-family: 'Montserrat Variable', sans-serif;

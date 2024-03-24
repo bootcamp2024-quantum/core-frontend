@@ -1,28 +1,33 @@
 import { useSelector } from 'react-redux';
 
-import Header from '../../components/Header/Header'
-import ProfileSelector from '../../components/ProfileSelector/ProfileSelector'
 import { selectUser } from '../../store/user/selectors';
+import ProfileSelector from '../../components/ProfileSelector/ProfileSelector';
+import EditProfileForm from '../../components/EditProfileForm/EditProfileForm';
 
-import css from './EditProfilePage.module.css'
+import css from './EditProfilePage.module.css';
 
 const EditProfilePage = () => {
-    const handleSelect = (value: string) => {
-        console.log('Selected value:', value);
-    };
-    const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
-    return (
-        <section>
-            <Header />
-            <div className={css.profile}>
-                <div className={css.generalBlock}>
-                    <h2 className={css.profileTitle}>Nice to see you, {user.name || "Mike"}!</h2>
-                    <ProfileSelector onSelect={handleSelect} />
-                </div>
-            </div>
-        </section>
-    )
-}
+  const handleSelect = (value: string) => {
+    console.log('Selected value:', value);
+  };
 
-export default EditProfilePage
+  const greeting = user.name
+    ? `Nice to see you, ${user.name}!`
+    : 'Nice to see you, User!';
+
+  return (
+    <section>
+      <div className={css.profile}>
+        <div className={css.generalBlock}>
+          <h2 className={css.profileTitle}>{greeting}</h2>
+          <ProfileSelector onSelect={handleSelect} />
+        </div>
+        <EditProfileForm />
+      </div>
+    </section>
+  );
+};
+
+export default EditProfilePage;

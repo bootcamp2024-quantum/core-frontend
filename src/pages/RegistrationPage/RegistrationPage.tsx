@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import Header from '../../components/Header/Header';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import OverlinedText from '../../components/OverlinedText';
+import RoadImage from '../../components/RoadImage/RoadImage';
 import { ROUTES } from '../../components/routes';
 
 import css from './RegistrationPage.module.css';
@@ -12,7 +12,6 @@ import css from './RegistrationPage.module.css';
 const RegistrationPage = () => {
   return (
     <div className={css.register}>
-      <Header />
       <div className={css.registerWrapper}>
         <RegistrationForm />
         <div className={css.socialWrapper}>
@@ -31,13 +30,14 @@ const RegistrationPage = () => {
             />
           </div>
           <p className={css.text}>
-            Already have an account?{' '}
+            Already have an account?
             <Link to={ROUTES.LOGIN} className={css.linkLogIn}>
               LOG IN
             </Link>
           </p>
         </div>
       </div>
+      <RoadImage className={css.road} />
     </div>
   );
 };

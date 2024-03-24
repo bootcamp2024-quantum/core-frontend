@@ -33,31 +33,32 @@ const App = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path={ROUTES.REGISTER}
+              element={
+                <PublicRoute>
+                  <RegistrationPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path={ROUTES.LOGIN}
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+
+            <Route
+              path={ROUTES.PROFILE}
+              element={
+                <PublicRoute>
+                  <EditProfilePage />
+                </PublicRoute>
+              }
+            />
           </Route>
-          <Route
-            path={ROUTES.LOGIN}
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path={ROUTES.REGISTER}
-            element={
-              <PublicRoute>
-                <RegistrationPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path={ROUTES.REGISTER}
-            element={
-              <PublicRoute>
-                <EditProfilePage />
-              </PublicRoute>
-            }
-          />
         </Routes>
       </Suspense>
     </Router>
