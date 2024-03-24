@@ -1,8 +1,10 @@
 import React from 'react';
+
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
-import css from './AvatarInput.module.css';
 import sprite from '../../images/sprite.svg';
+
+import css from './AvatarInput.module.css';
 
 interface AvatarInputProps {
   handleAvatarChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,12 +13,12 @@ interface AvatarInputProps {
   fileInputRef: React.RefObject<HTMLInputElement>;
 }
 
-const AvatarInput: React.FC<AvatarInputProps> = ({
+const AvatarInput = ({
   handleAvatarChange,
   handleFileButtonClick,
   avatarImagePath,
   fileInputRef,
-}) => {
+}: AvatarInputProps) => {
   return (
     <div className={css.photoBlock}>
       <p className={css.photoTitle}>Photo(optional)</p>
