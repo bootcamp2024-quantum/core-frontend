@@ -9,6 +9,7 @@
   width: 666px;
   height: 885px;
   opacity: 0.2;
+  z-index: -20;
 }
 
 .registerWrapper {
