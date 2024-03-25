@@ -1,5 +1,5 @@
 import { createAsyncThunk, nanoid } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { setToken } from '../../api';
 import { UserCredentials } from '../../types';
 import { UserState } from './slice';
@@ -51,3 +51,22 @@ export const getUserById = async (id: string) => {
 
   return user;
 };
+
+export const register = createAsyncThunk<
+  Pick<UserState, 'user' | 'token'>,
+  UserCredentials,
+  {
+    rejectValue: string;
+  }
+>('user/register', async (credentials, thunkAPI) => {
+  try {
+    const response = await axios.post('user/register', credentials);
+    setToken(response.data.token);
+    const user = await getUserById(response.data.userId);
+    return { user, token: response.data.token };
+  } catch (err) {
+    return thunkAPI.rejectWithValue(
+      (err as AxiosError).message || 'Registration failed: Unknown error',
+    );
+  }
+});

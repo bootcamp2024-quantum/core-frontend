@@ -1,0 +1,12 @@
+.socialList {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+  justify-content: flex-end;
+}
+
+.socialListItem {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+}

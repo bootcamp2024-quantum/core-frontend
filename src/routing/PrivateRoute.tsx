@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
-import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { ReactNode } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { selectIsLoggedIn } from "../store/user/selectors";
+import { selectIsLoggedIn } from '../store/user/selectors';
 import { ROUTES } from './routes';
 
 interface PrivateRouteProps {

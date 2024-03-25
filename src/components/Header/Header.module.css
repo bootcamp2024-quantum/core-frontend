@@ -36,32 +36,57 @@
   line-height: 1.5;
   color: var(--text-primary);
   cursor: pointer;
+  transition: var(--transition);
+  border-radius: 24px;
+  border: 1px solid transparent;
+  height: 64px;
 }
 
 .navMenuItem:hover,
 .navMenuItem:focus {
   border: 1px solid var(--primary);
-  border-radius: 24px;
 }
 
 .active {
   border-radius: 24px;
   box-shadow: var(--shadow-inset);
   background: var(--white);
+  border: none;
+}
+
+.navMenuItem:disabled {
+  background: var(--primary-muted);
+  border: none;
+  box-shadow: none;
+  color: var(--text-muted);
 }
 
 .searchBarBtn {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 149px;
+  height: 64px;
   gap: 8px;
-  width: 109px;
-  border: none;
-  color: inherit;
   background-color: transparent;
   font-size: 20px;
   line-height: 1.5;
   color: var(--text-primary);
+  transition: var(--transition);
+  border-radius: 24px;
+  border: 1px solid transparent;
+}
+
+.searchBarBtn:hover,
+.searchBarBtn:focus {
+  border: 1px solid var(--primary);
+}
+
+.searchBarBtn:disabled {
+  background: var(--primary-muted);
+  border: none;
+  box-shadow: none;
+  color: var(--text-muted);
 }
 
 .searchIcon {
@@ -70,4 +95,8 @@
   height: 20px;
   fill: none;
   stroke: var(--text-primary);
+}
+
+.searchIcon:disabled {
+  fill: var(--text-muted);
 }

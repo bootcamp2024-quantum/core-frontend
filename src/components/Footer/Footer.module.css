@@ -1,25 +1,87 @@
 .footer {
-    padding: 60px 80px;
-    display: flex;
-    flex-direction: column;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
 }
 
-.footerContentTitle {
-    font-weight: 500;
-    font-size: 32px;
+.footerContactBlock {
+  width: calc(50% - 1px);
+  padding-right: auto;
+  border-right: 1px solid var(--primary);
+}
+
+.footerTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--violet);
+  margin-bottom: 24px;
+}
+
+.footerCard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 519px;
+}
+
+.footerText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  max-width: 516px;
+  margin-bottom: 24px;
+}
+
+.contactListItem {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.icon {
+  fill: var(--text-primary);
+  width: 32px;
+  height: 32px;
+}
+
+.clusterLogo {
+  width: 250px;
+  height: 80px;
 }
 
 .footerAdditionalBlock {
-    display: flex;
-    flex-direction: column;
-    max-width: 463px;
-    height: 83px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 463px;
+  height: 69px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px auto 0;
 }
 
 .additionalBlockNav {
-    display: flex;
-    gap: 23px;
+  display: flex;
+  gap: 23px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.copyrights {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
 }

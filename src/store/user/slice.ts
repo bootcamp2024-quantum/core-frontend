@@ -1,8 +1,9 @@
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
-import { Token } from "../../types";
-import { User } from "../../types/User";
-import { login } from "./thunks";
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { Token } from '../../types';
+import { User } from '../../types/User';
+import { login } from './thunks';
+import { register } from './thunks';
 
 export interface UserState {
   user: User;
@@ -14,7 +15,7 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  user: { id: "", name: "", email: "", avatar: null },
+  user: { id: '', name: '', email: '', avatar: null },
   token: { access: undefined, refresh: undefined },
   isLoggedIn: false,
   isLoading: false,
@@ -23,7 +24,7 @@ const initialState: UserState = {
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -32,7 +33,7 @@ export const userSlice = createSlice({
         login.fulfilled,
         (
           state: UserState,
-          action: PayloadAction<{ user: User; token: Token }>
+          action: PayloadAction<{ user: User; token: Token }>,
         ) => {
           state.user = action.payload.user;
           state.token = action.payload.token;
@@ -40,13 +41,32 @@ export const userSlice = createSlice({
           state.isLoggedIn = true;
           state.isLoading = false;
           state.error = null;
-        }
+        },
       )
       .addCase(login.rejected, (state: UserState, action) => {
         state.isLoading = false;
         state.error = action.payload!;
       })
-      .addCase(login.pending, onPending);
+      .addCase(login.pending, onPending)
+      .addCase(
+        register.fulfilled,
+        (
+          state: UserState,
+          action: PayloadAction<{ user: User; token: Token }>,
+        ) => {
+          state.user = action.payload.user;
+          state.token = action.payload.token;
+
+          state.isLoggedIn = true;
+          state.isLoading = false;
+          state.error = null;
+        },
+      )
+      .addCase(register.rejected, (state: UserState, action) => {
+        state.isLoading = false;
+        state.error = action.payload!;
+      })
+      .addCase(register.pending, onPending);
   },
 });
 

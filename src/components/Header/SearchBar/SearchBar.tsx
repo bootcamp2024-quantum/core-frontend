@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import sprite from '../../../images/sprite.svg'
+import sprite from '../../../assets/sprite.svg';
 
-import css from "./SearchBar.module.css";
+import css from './SearchBar.module.css';
 
 interface SearchBarProps {
   onClose: () => void;
@@ -30,7 +30,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
           autoFocus
           placeholder="What are you looking for?"
         />
-        <button type="submit" className={css.button} onClick={handleButtonClick}>
+        <button
+          type="submit"
+          className={css.button}
+          onClick={handleButtonClick}
+        >
           <svg className={css.searchIcon}>
             <use xlinkHref={`${sprite}#search`} />
           </svg>

@@ -18,16 +18,25 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 1.5;
+  border: 1px solid transparent;
+  transition: var(--transition);
 }
 
 .loginBtn:hover,
 .loginBtn:focus {
-  border: 1px solid var(--primary);
+  border: 1px solid var(--secondary);
 }
 
 .loginBtn:active {
   border: none;
   box-shadow: var(--shadow-inset);
+}
+
+.loginBtn:disabled {
+  background: var(--primary-muted);
+  border: none;
+  box-shadow: none;
+  color: var(--text-muted);
 }
 
 .signUpBtn {
@@ -44,6 +53,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 1.5;
+  transition: var(--transition);
 }
 
 .signUpBtn:hover,
@@ -54,4 +64,11 @@
 .signUpBtn:active {
   box-shadow: var(--shadow-inset);
   background: var(--secondary);
+}
+
+.signUpBtn:disabled {
+  background: var(--primary-muted);
+  border: none;
+  box-shadow: none;
+  color: var(--text-muted);
 }

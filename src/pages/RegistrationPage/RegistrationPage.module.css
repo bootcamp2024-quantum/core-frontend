@@ -1,0 +1,76 @@
+.register {
+  padding-bottom: 67px;
+}
+
+.road {
+  position: fixed;
+  left: -218px;
+  top: 97px;
+  width: 666px;
+  height: 885px;
+  opacity: 0.2;
+  z-index: -20;
+}
+
+.registerWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 610px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.socialWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  gap: 32px;
+}
+
+.socialBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.linkedinButton {
+  background-color: #0a66c2;
+  transition: var(--transition);
+}
+
+.linkedinButton:hover,
+.linkedinButton:focus,
+.linkedinButton:active {
+  border-color: #0d56a0;
+  background-color: #0d56a0;
+}
+
+.text {
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.linkLogIn {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-align: center;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.linkLogIn:hover,
+.linkLogInk:focus,
+.linkLogIn:active {
+  color: var(--secondary);
+}
+
+.linkLogIn:disabled {
+  color: var(--text-muted);
+  text-decoration: dashed;
+}

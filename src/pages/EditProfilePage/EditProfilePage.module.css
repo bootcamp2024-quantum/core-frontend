@@ -1,0 +1,15 @@
+.profile {
+  padding: 80px;
+}
+
+.generalBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileTitle {
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--main-text-color);
+  margin-bottom: 63px;
+}

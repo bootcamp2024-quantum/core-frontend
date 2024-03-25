@@ -1,0 +1,47 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  width: 100%;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.registerGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  gap: 16px;
+  width: 360px;
+}
+
+.registerTitle {
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+}
+
+.eyeIcon {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.eyeIcon:hover,
+.eyeIcon:focus,
+.eyeIcon:active {
+  opacity: 1;
+}
+
+.loginButton {
+  margin: 0 auto;
+}
