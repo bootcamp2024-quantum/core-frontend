@@ -1,4 +1,4 @@
-/* DEFAULT SYLES */
+/* DEFAULT STYLES */
 
 .default {
   display: flex;
@@ -8,7 +8,7 @@
   gap: 16px;
   border: 1px solid transparent;
   border-radius: 24px;
-  color: rgba(42, 42, 42, 1);
+  color: var(--main-text-color);
   text-wrap: wrap;
   font-size: 20px;
   line-height: 1.5;
@@ -26,7 +26,7 @@
 
 /* PRIMARY */
 .primary {
-  background-color: rgba(248, 189, 0, 1);
+  background-color: var(--main-btn-normal-background);
   box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.15);
   border: none;
 }
@@ -34,7 +34,7 @@
 .primary:hover,
 .primary:focus,
 .primary:active {
-  background-color: rgba(248, 164, 0, 1);
+  background-color: var(--main-btn-hover-background);
 }
 
 .primary:active {
@@ -43,19 +43,19 @@
 
 .primary:disabled {
   box-shadow: none;
-  background-color: rgba(244, 236, 223, 1);
-  color: rgba(157, 157, 157, 1);
+  background-color: var(--main-button-disabled-background);
+  color: var(--disabled-text-color);
 }
 
 /* SECONDARY */
 .secondary {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--white);
   box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
 .secondary:hover,
 .secondary:focus {
-  border: 1px solid rgba(248, 189, 0, 1);
+  border: 1px solid var(--main-btn-normal-background);
 }
 
 .secondary:active {
@@ -63,9 +63,9 @@
 }
 
 .secondary:disabled {
-  color: rgba(157, 157, 157, 1);
+  color: var(--disabled-text-color);
   box-shadow: none;
-  background-color: rgba(205, 205, 205, 1);
+  background-color: var(--secondary-btn-disabled-background);
 }
 
 /* GHOST */
@@ -76,7 +76,7 @@
 
 .ghost:hover,
 .ghost:focus {
-  border: 1px solid rgba(248, 189, 0, 1);
+  border: 1px solid var(--main-btn-normal-background);
 }
 
 .ghost:active {
@@ -84,7 +84,7 @@
 }
 
 .ghost:disabled {
-  color: rgba(157, 157, 157, 1);
+  color: var(--disabled-text-color);
 }
 
 /* LINK */
@@ -97,17 +97,17 @@
   background-color: transparent;
   border: none;
   border-radius: 0;
-  color: rgba(248, 189, 0, 1);
+  color: var(--main-btn-normal-background);
 }
 
 .link:hover,
 .link:focus,
 .link:active {
-  color: rgba(248, 164, 0, 1);
+  color: var(--main-btn-hover-background);
 }
 
 .link:disabled {
-  color: rgba(157, 157, 157, 1);
+  color: var(--disabled-text-color);
   text-decoration: dashed;
 }
 

@@ -1,5 +1,5 @@
 .title {
-  color: rgba(42, 42, 42, 1);
+  color: var(--main-text-color);
   font-size: 40px;
   font-weight: 700;
   line-height: 1.22;
