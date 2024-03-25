@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
-import styles from './MaxWidthWrapper.module.css';
+import styles from './Container.module.css';
 
-interface MaxWidthWrapperProps {
+interface ContainerProps {
   children: ReactNode;
   className?: string;
 }
 
-const MaxWidthWrapper = ({ children, className }: MaxWidthWrapperProps) => {
+const Container = ({ children, className }: ContainerProps) => {
   return (
     <div className={`${styles.wrapper} ${className ? className : ''}`}>
       {children}
@@ -14,4 +14,4 @@ const MaxWidthWrapper = ({ children, className }: MaxWidthWrapperProps) => {
   );
 };
 
-export default MaxWidthWrapper;
+export default Container;

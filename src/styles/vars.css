@@ -1,25 +1,4 @@
 :root {
-  --black: #000;
-  --white: #fff;
-  --main-background: #fafafa;
-  --main-text-color: #2a2a2a;
-  --main-btn-normal-background: #f8bd00;
-  --main-btn-hover-background: #f8a400;
-  --main-button-disabled-background: #f4ecdf;
-  --secondary-btn-border-hover: #f8bd00;
-  --secondary-btn-disabled-background: #cdcdcd;
-  --btn-content-disabled-color: #9d9d9d;
-  --input-placeholder-normal: #a9a9a9;
-  --input-error-color: #e33629;
-  --input-border-normal: #f8bd00;
-  --input-border-hover: #f8a400;
-  --main-violet-color: #9f02b8;
-
-  --shadow-primary: 2px 4px 10px 0 #00000026;
-  --shadow-inset: inset 8px 8px 10px 0 #00000026;
-
-  --transition: all 250ms linear;
-
   --black: #000000;
   --white: #ffffff;
   --bg-light: #fafafa;
@@ -30,6 +9,9 @@
   --primary-muted: #f4ecdf;
   --secondary-muted: #cdcdcd;
   --input-normal: #a9a9a9;
-  --input-error-color: #e33629;
+  --input-error: #e33629;
   --violet: #9f02b8;
+  --shadow-primary: 2px 4px 10px 0 #00000026;
+  --shadow-inset: inset 8px 8px 10px 0 #00000026;
+  --transition: all 250ms linear;
 }
