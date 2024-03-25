@@ -8,7 +8,7 @@
   display: block;
   width: 91px;
   height: 1px;
-  background-color: rgba(169, 169, 169, 1);
+  background-color: var(--input-normal);
 }
 
 .word {

@@ -4,8 +4,8 @@
 :root {
   font-family: 'Montserrat Variable', sans-serif;
   font-synthesis: none;
-  background-color: var(--main-background);
-  color: var(--main-text-color);
+  background-color: var(--bg-light);
+  color: var(--text-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
