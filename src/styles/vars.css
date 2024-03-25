@@ -8,7 +8,10 @@
   --secondary: #f8a400;
   --primary-muted: #f4ecdf;
   --secondary-muted: #cdcdcd;
-  --input-placeholder-normal: #a9a9a9;
-  --input-error-color: #e33629;
+  --input-normal: #a9a9a9;
+  --input-error: #e33629;
   --violet: #9f02b8;
+  --shadow-primary: 2px 4px 10px 0 #00000026;
+  --shadow-inset: inset 8px 8px 10px 0 #00000026;
+  --transition: all 250ms linear;
 }

@@ -16,14 +16,14 @@
   height: 64px;
   border: 1px solid var(--primary);
   border-radius: 20px;
-  box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-primary);
   outline: none;
 }
 
 .input::placeholder {
   font-size: 16px;
   line-height: 1.22;
-  color: rgba(169, 169, 169, 1);
+  color: var(--input-normal);
 }
 
 .input:hover {
@@ -32,7 +32,7 @@
 
 .input:active {
   border-color: var(--secondary);
-  box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: var(--shadow-inset);
 }
 
 .input:disabled {
@@ -41,15 +41,15 @@
 }
 
 .input.errorInput {
-  border-color: rgba(227, 54, 41, 1);
+  border-color: var(--input-error);
 }
 
 .input.input.errorInput::placeholder {
-  color: rgba(227, 54, 41, 1);
+  color: var(--input-error);
 }
 
 .errorText {
   padding-left: 14px;
   line-height: 1.31;
-  color: rgba(227, 54, 41, 1);
+  color: var(--input-error);
 }
