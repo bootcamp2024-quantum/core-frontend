@@ -3,34 +3,34 @@
 }
 
 .input {
-  border: 1px solid var(--input-border-normal);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   padding: 20px;
   width: 592px;
   height: 64px;
   margin-right: 96px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--shadow-primary);
   background: var(--white);
-  color: var(--main-text-color);
+  color: var(--text-primary);
   transition: var(--transition);
 }
 
 .input::placeholder {
   font-weight: 400;
   font-size: 16px;
-  color: var(--input-placeholder-normal);
+  color: var(--input-normal);
 }
 
 .input:hover,
 .input:focus {
   outline: none;
   color: inherit;
-  border: 1px solid var(--input-border-hover);
+  border: 1px solid var(--secondary);
 }
 
 .input:active {
-  border: 1px solid var(--input-border-hover);
-  box-shadow: var(--box-shadow-inset);
+  border: 1px solid var(--secondary);
+  box-shadow: var(--shadow-inset);
   color: inherit;
 }
 
@@ -52,5 +52,5 @@
   width: 28px;
   height: 28px;
   fill: none;
-  stroke: var(--main-text-color);
+  stroke: var(--text-primary);
 }

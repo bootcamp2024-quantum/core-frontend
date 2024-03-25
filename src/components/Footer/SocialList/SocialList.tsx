@@ -1,38 +1,25 @@
-import { Link } from 'react-router-dom';
-
-import instagram1x from '../../../images/social/instagram-1x.png';
-import instagram2x from '../../../images/social/instagram-2x.png';
-import facebook1x from '../../../images/social/facebook-1x.png';
-import facebook2x from '../../../images/social/facebook-2x.png';
-import twitter1x from '../../../images/social/twitter-1x.png';
-import twitter2x from '../../../images/social/twitter-2x.png';
+import instagram from '../../../assets/instagram.svg';
+import facebook from '../../../assets/facebook.svg';
+import twitter from '../../../assets/twitter.svg';
 
 import css from './SocialList.module.css';
 
+const socialMediaPlatforms = [
+  { name: 'Instagram', icon: instagram, link: '/' },
+  { name: 'Facebook', icon: facebook, link: '/' },
+  { name: 'Twitter', icon: twitter, link: '/' },
+];
+
 const SocialList = () => {
-  const dpr = window.devicePixelRatio || 1;
-
-  const instagramLogo = dpr > 1 ? instagram2x : instagram1x;
-  const facebookLogo = dpr > 1 ? facebook2x : facebook1x;
-  const twitterLogo = dpr > 1 ? twitter2x : twitter1x;
-
   return (
     <ul className={css.socialList}>
-      <li className={css.socialListItem}>
-        <Link to={'/'}>
-          <img src={instagramLogo} alt="Instagram" />
-        </Link>
-      </li>
-      <li className={css.socialListItem}>
-        <Link to={'/'}>
-          <img src={facebookLogo} alt="Facebook" />
-        </Link>
-      </li>
-      <li className={css.socialListItem}>
-        <Link to={'/'}>
-          <img src={twitterLogo} alt="Twitter" />
-        </Link>
-      </li>
+      {socialMediaPlatforms.map((platform, index) => (
+        <li key={index} className={css.socialListItem}>
+          <a href={platform.link} target="_blank" rel="noopener noreferrer">
+            <img src={platform.icon} alt={platform.name.toLowerCase()} />
+          </a>
+        </li>
+      ))}
     </ul>
   );
 };

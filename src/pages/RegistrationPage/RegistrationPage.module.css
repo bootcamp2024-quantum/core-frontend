@@ -59,17 +59,17 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-align: center;
-  color: var(--main-btn-normal-background);
+  color: var(--primary);
   transition: var(--transition);
 }
 
 .linkLogIn:hover,
 .linkLogInk:focus,
 .linkLogIn:active {
-  color: var(--main-btn-hover-background);
+  color: var(--secondary);
 }
 
 .linkLogIn:disabled {
-  color: var(--btn-content-disabled-color);
+  color: var(--text-muted);
   text-decoration: dashed;
 }

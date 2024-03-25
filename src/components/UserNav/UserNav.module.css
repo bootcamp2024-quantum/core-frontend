@@ -1,42 +1,42 @@
 .userBlock {
-    display: flex;
-    height: 64px;
-    padding: 0 20px;
-    gap: 16px;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  height: 64px;
+  padding: 0 20px;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .userInfo {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .userIcon {
-    width: 64px;
-    height: 64px;
-    padding: 8px;
+  width: 64px;
+  height: 64px;
+  padding: 8px;
 }
 
 .userName {
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--main-text-color);
-    display: flex;
-    align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
 }
 
 .arrowLink {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .arrowIcon {
-    display: block;
-    width: 18px;
-    height: 100%;
-    fill: var(--main-text-color);
+  display: block;
+  width: 18px;
+  height: 100%;
+  fill: var(--text-primary);
 }

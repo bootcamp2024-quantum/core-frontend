@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
-import sprite from '../../images/sprite.svg';
+import sprite from '../../assets/sprite.svg';
 
 import css from './AvatarInput.module.css';
 

@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import CSALogo from '../CSALogo/CSALogo';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
 import SearchBar from './SearchBar/SearchBar';
-import { ROUTES } from '../routes';
-import sprite from '../../images/sprite.svg';
+import { ROUTES } from '../../routing/routes';
+import logo from '../../assets/csa-logo-desktop.svg';
+import sprite from '../../assets/sprite.svg';
 import { selectIsLoggedIn } from '../../store/user/selectors';
 
 import css from './Header.module.css';
@@ -50,9 +50,9 @@ const Header = () => {
 
   return (
     <header className={css.header}>
-      <NavLink to={ROUTES.HOME}>
-        <CSALogo className={css.logo} />
-      </NavLink>
+      <a href={'/'} target="_blank" rel="noopener noreferrer">
+        <img src={logo} alt="Career Skill Atlas logo" />
+      </a>
       <div className={css.headerMenu}>
         {isSearchVisible ? (
           <SearchBar onClose={handleSearchClose} />

@@ -7,14 +7,14 @@
 .footerContactBlock {
   width: calc(50% - 1px);
   padding-right: auto;
-  border-right: 1px solid var(--input-border-normal);
+  border-right: 1px solid var(--primary);
 }
 
 .footerTitle {
   font-weight: 600;
   font-size: 24px;
   line-height: 1.5;
-  color: var(--main-violet-color);
+  color: var(--violet);
   margin-bottom: 24px;
 }
 
@@ -34,7 +34,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--main-text-color);
+  color: var(--text-primary);
   max-width: 516px;
   margin-bottom: 24px;
 }
@@ -46,11 +46,11 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--main-text-color);
+  color: var(--text-primary);
 }
 
 .icon {
-  fill: var(--main-text-color);
+  fill: var(--text-primary);
   width: 32px;
   height: 32px;
 }
@@ -76,12 +76,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--main-text-color);
+  color: var(--text-primary);
 }
 
 .copyrights {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--main-text-color);
+  color: var(--text-primary);
 }

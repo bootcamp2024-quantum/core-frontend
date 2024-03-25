@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 import Icon from '../Icon';
 import SocialList from './SocialList/SocialList';
-import ClusterLogo from '../ClusterLogo/ClusterLogo';
-import { ROUTES } from '../routes';
+import { ROUTES } from '../../routing/routes';
+import logo from '../../assets/cluster-logo.svg';
 
 import css from './Footer.module.css';
 
@@ -40,9 +40,13 @@ const Footer = () => {
         </div>
         <div className={css.footerSocialBlock}>
           <SocialList />
-          <Link to={'/'}>
-            <ClusterLogo className={css.clusterLogo} />
-          </Link>
+          <a href={'/'} target="_blank" rel="noopener noreferrer">
+            <img
+              src={logo}
+              alt="Kharkiv IT Cluster logo"
+              className={css.clusterLogo}
+            />
+          </a>
         </div>
       </div>
       <div className={css.footerAdditionalBlock}>

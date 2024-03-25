@@ -5,7 +5,7 @@ import Icon from '../../components/Icon';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import OverlinedText from '../../components/OverlinedText';
 import RoadImage from '../../components/RoadImage/RoadImage';
-import { ROUTES } from '../../components/routes';
+import { ROUTES } from '../../routing/routes';
 
 import css from './RegistrationPage.module.css';
 

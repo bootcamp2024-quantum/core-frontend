@@ -1,5 +1,5 @@
-import road1x from '../../images/forms/road-1x.png';
-import road2x from '../../images/forms/road-2x.png';
+import road1x from '../../assets/forms/road-1x.png';
+import road2x from '../../assets/forms/road-2x.png';
 
 interface RoadImageProps {
   className?: string;

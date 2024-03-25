@@ -12,7 +12,7 @@
   border: none;
   width: 126px;
   height: 64px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--shadow-primary);
   background: var(--white);
   cursor: pointer;
   font-weight: 400;
@@ -24,19 +24,19 @@
 
 .loginBtn:hover,
 .loginBtn:focus {
-  border: 1px solid var(--secondary-btn-border-hover);
+  border: 1px solid var(--secondary);
 }
 
 .loginBtn:active {
   border: none;
-  box-shadow: var(--box-shadow-inset);
+  box-shadow: var(--shadow-inset);
 }
 
 .loginBtn:disabled {
-  background: var(--main-button-disabled-background);
+  background: var(--primary-muted);
   border: none;
   box-shadow: none;
-  color: var(--btn-content-disabled-color);
+  color: var(--text-muted);
 }
 
 .signUpBtn {
@@ -47,8 +47,8 @@
   padding: 20px 32px;
   width: 142px;
   height: 64px;
-  box-shadow: var(--box-shadow);
-  background: var(--main-btn-normal-background);
+  box-shadow: var(--shadow-primary);
+  background: var(--primary);
   cursor: pointer;
   font-weight: 400;
   font-size: 20px;
@@ -58,17 +58,17 @@
 
 .signUpBtn:hover,
 .signUpBtn:focus {
-  background: var(--main-btn-hover-background);
+  background: var(--secondary);
 }
 
 .signUpBtn:active {
-  box-shadow: var(--box-shadow-inset);
-  background: var(--main-btn-hover-background);
+  box-shadow: var(--shadow-inset);
+  background: var(--secondary);
 }
 
 .signUpBtn:disabled {
-  background: var(--main-button-disabled-background);
+  background: var(--primary-muted);
   border: none;
   box-shadow: none;
-  color: var(--btn-content-disabled-color);
+  color: var(--text-muted);
 }
