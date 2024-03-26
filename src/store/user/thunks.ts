@@ -1,46 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
-import { axiosInstance, setToken } from '../../api';
-import { User, UserCredentials } from '../../types';
+import axios, { AxiosError } from 'axios';
+import { setToken } from '../../api';
+import { getUserById } from '../../api/user';
+import { UserCredentials } from '../../types';
 import { UserState } from './slice';
-
-export const login = createAsyncThunk<
-  Pick<UserState, 'user' | 'token'>,
-  UserCredentials,
-  {
-    rejectValue: string;
-  }
->('user/login', async ({ email, password }, thunkAPI) => {
-  try {
-    console.log(email, password);
-
-    // login user with /token api route
-    const { data } = await axiosInstance.get('/token/');
-    const { refresh, access, user_id } = data as {
-      refresh: string;
-      access: string;
-      user_id: string | number;
-    };
-    console.log(data);
-    // set access token to axios environments
-    setToken(access);
-
-    // getting user with /users/{userId} api route
-    const user = await getUserById(user_id);
-
-    return { user, token: { access, refresh } };
-  } catch (err) {
-    return thunkAPI.rejectWithValue(
-      (err as AxiosError).message || 'Uncaught error',
-    );
-  }
-});
-
-export const getUserById = async (id: string | number): Promise<User> => {
-  const { data: user } = await axiosInstance.get(`/users/${id}`);
-
-  return user;
-};
 
 export const register = createAsyncThunk<
   Pick<UserState, 'user' | 'token'>,
@@ -54,6 +17,40 @@ export const register = createAsyncThunk<
     setToken(response.data.token);
     const user = await getUserById(response.data.userId);
     return { user, token: response.data.token };
+  } catch (err) {
+    return thunkAPI.rejectWithValue(
+      (err as AxiosError).message || 'Registration failed: Unknown error',
+    );
+  }
+});
+
+export const login = createAsyncThunk<
+  Pick<UserState, 'user' | 'token'>,
+  UserCredentials,
+  {
+    rejectValue: string;
+  }
+>('user/login', async ({ email, password }, thunkAPI) => {
+  try {
+    // login user with /token api route
+    const { data } = await axios.post('/token/', {
+      email,
+      password,
+    });
+
+    const { refresh, access, user_id } = data as {
+      refresh: string;
+      access: string;
+      user_id: string | number;
+    };
+
+    // set access token to axios environments
+    setToken(access);
+
+    // getting user with /users/{userId} api route
+    const user = await getUserById(user_id);
+
+    return { user, token: { access, refresh } };
   } catch (err) {
     return thunkAPI.rejectWithValue(
       (err as AxiosError).message || 'Registration failed: Unknown error',

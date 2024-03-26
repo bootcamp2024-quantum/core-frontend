@@ -3,6 +3,8 @@ import styles from './Icon.module.css';
 interface IconProps {
   id: string;
   size?: number;
+  width?: number;
+  height?: number;
   fill?: string;
   stroke?: string;
   boxStyles?: string;
@@ -13,6 +15,8 @@ interface IconProps {
 const Icon = ({
   id,
   size = 32,
+  width,
+  height,
   fill,
   stroke,
   onClick,
@@ -23,8 +27,8 @@ const Icon = ({
     <div onClick={onClick} className={`${styles.box} ${boxStyles}`}>
       <svg
         className={className}
-        width={size}
-        height={size}
+        width={width || size}
+        height={height || size}
         fill={fill}
         stroke={stroke}
       >

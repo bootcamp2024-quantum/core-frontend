@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
-});
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export const setToken = (token: string) => {
-  axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
 export const deleteToken = () => {
-  axiosInstance.defaults.headers.common['Authorization'] = '';
+  axios.defaults.headers.common['Authorization'] = '';
 };
