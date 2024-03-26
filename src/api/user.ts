@@ -1,13 +1,35 @@
 import axios from 'axios';
-import { User } from '../types';
+import { Token, User, UserCredentials } from '../types';
+
+type TokenResponseType = Required<
+  Token & {
+    id: string | number;
+  }
+>;
+
+export const getUserToken = async (credentials: UserCredentials) => {
+  const {
+    data: { refresh, access, user_id },
+  } = await axios.post('/token/', credentials);
+
+  const token: TokenResponseType = {
+    refresh,
+    access,
+    id: user_id,
+  };
+
+  return token;
+};
 
 export const getUserById = async (id: string | number): Promise<User> => {
-  const { data: user } = await axios.get(`/users/${id}`);
+  const {
+    data: { username, pk, email, avatar },
+  } = await axios.get(`/users/${id}`);
 
   return {
-    name: user.username,
-    id: user.pk,
-    email: user.email,
-    avatar: user.avatar,
+    username,
+    id: pk,
+    email,
+    avatar,
   };
 };

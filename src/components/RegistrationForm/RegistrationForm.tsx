@@ -6,8 +6,10 @@ import Input from '../Input';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import AvatarInput from '../AvatarInput/AvatarInput';
-import { FormData } from '../../types';
-import { registerSchema } from '../../schemas/registerSchema';
+import {
+  RegisterPropsType,
+  registerSchema,
+} from '../../schemas/registerSchema';
 import { register } from '../../store/user/thunks';
 import { useAppDispatch } from '../../hooks/redux';
 
@@ -22,11 +24,14 @@ const RegistrationForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>({
+  } = useForm<RegisterPropsType>({
     resolver: yupResolver(registerSchema),
+    defaultValues: {
+      avatar: null,
+    },
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<RegisterPropsType> = (data) => {
     if (avatarFile) {
       data.avatar = avatarFile;
     }
@@ -61,9 +66,9 @@ const RegistrationForm = () => {
         <div className={css.formWrapper}>
           <div className={css.registerGroup}>
             <Input
-              register={formRegister('name')}
+              register={formRegister('username')}
               placeholder="Name and surname"
-              error={errors.name?.message}
+              error={errors.username?.message}
             />
             <Input
               register={formRegister('email')}
@@ -87,10 +92,10 @@ const RegistrationForm = () => {
               }
             />
             <Input
-              register={formRegister('confirm_password')}
+              register={formRegister('repeat_password')}
               placeholder="Confirm password"
               type={shouldShowPassword ? 'text' : 'password'}
-              error={errors.confirm_password?.message}
+              error={errors.repeat_password?.message}
               icon={
                 <Icon
                   className={css.eyeIcon}
@@ -110,16 +115,14 @@ const RegistrationForm = () => {
             fileInputRef={fileInputRef}
           />
         </div>
-        <div>
-          <Button
-            type="submit"
-            size="lg"
-            variant="primary"
-            className={css.loginButton}
-          >
-            Submit
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          size="lg"
+          variant="primary"
+          className={css.loginButton}
+        >
+          Submit
+        </Button>
       </form>
     </section>
   );

@@ -15,7 +15,7 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  user: { id: '', name: '', email: '', avatar: null },
+  user: { id: '', username: '', email: '', avatar: null },
   token: { access: undefined, refresh: undefined },
   isLoggedIn: false,
   isLoading: false,
