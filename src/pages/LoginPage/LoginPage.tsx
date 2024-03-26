@@ -22,6 +22,7 @@ const LoginPage = () => {
           Don't have an account? <Button variant="link">SIGN UP</Button>
         </p>
       </div>
+      <div className={styles.road}> </div>
     </Container>
   );
 };

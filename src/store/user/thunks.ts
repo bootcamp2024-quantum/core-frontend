@@ -1,9 +1,8 @@
-import { createAsyncThunk, nanoid } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
-import { setToken } from '../../api';
-import { UserCredentials } from '../../types';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
+import { axiosInstance, setToken } from '../../api';
+import { User, UserCredentials } from '../../types';
 import { UserState } from './slice';
-// import { axiosInstance } from "../../axios";
 
 export const login = createAsyncThunk<
   Pick<UserState, 'user' | 'token'>,
@@ -16,23 +15,20 @@ export const login = createAsyncThunk<
     console.log(email, password);
 
     // login user with /token api route
-    // const token = await axiosInstance.get("/token");
-    // => token as { token: { access: boolean, refresh: boolean }, userId: string }
-    const { token, userId } = await Promise.resolve({
-      token: {
-        access: nanoid(),
-        refresh: nanoid(),
-      },
-      userId: nanoid(),
-    });
-
+    const { data } = await axiosInstance.get('/token/');
+    const { refresh, access, user_id } = data as {
+      refresh: string;
+      access: string;
+      user_id: string | number;
+    };
+    console.log(data);
     // set access token to axios environments
-    setToken(token.access);
+    setToken(access);
 
     // getting user with /users/{userId} api route
-    const user = await getUserById(userId);
+    const user = await getUserById(user_id);
 
-    return { user, token };
+    return { user, token: { access, refresh } };
   } catch (err) {
     return thunkAPI.rejectWithValue(
       (err as AxiosError).message || 'Uncaught error',
@@ -40,14 +36,8 @@ export const login = createAsyncThunk<
   }
 });
 
-export const getUserById = async (id: string) => {
-  //   const user = await axiosInstance.get(`/user/${id}`);
-  const user = await Promise.resolve({
-    id: id,
-    name: `User${id}`,
-    email: 'useremail@gmail.com',
-    avatar: null,
-  });
+export const getUserById = async (id: string | number): Promise<User> => {
+  const { data: user } = await axiosInstance.get(`/users/${id}`);
 
   return user;
 };
