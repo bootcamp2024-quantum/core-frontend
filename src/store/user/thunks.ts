@@ -19,7 +19,7 @@ export const register = createAsyncThunk<
     return { user, token: response.data.token };
   } catch (err) {
     return thunkAPI.rejectWithValue(
-      (err as AxiosError).message || 'Registration failed: Unknown error',
+      (err as AxiosError).message || 'Log in failed: Unknown error',
     );
   }
 });
