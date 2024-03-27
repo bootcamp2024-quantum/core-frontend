@@ -9,18 +9,27 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'link' | 'icon';
 }
 
+interface ButtonVariantProps
+  extends Pick<ButtonProps, 'size' | 'variant' | 'className'> {}
+
+export function buttonVariant({
+  size = 'fit',
+  variant = 'primary',
+  className,
+}: ButtonVariantProps) {
+  return `${styles.default} ${styles[size]} ${styles[variant]} ${className}`;
+}
+
 const Button = ({
   children,
   icon,
   iconPosition = 'after',
-  size = 'fit',
-  variant = 'primary',
+  size,
+  variant,
   className,
   ...rest
 }: ButtonProps) => {
-  const buttonStyle = `${styles.default} ${styles[size]} ${styles[variant]} ${
-    className ? className : ''
-  }`;
+  const buttonStyle = buttonVariant({ size, variant, className });
 
   return (
     <button className={buttonStyle} {...rest}>

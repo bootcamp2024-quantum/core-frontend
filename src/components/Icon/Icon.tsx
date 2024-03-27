@@ -14,7 +14,7 @@ interface IconProps {
 
 const Icon = ({
   id,
-  size = 32,
+  size = 28,
   width,
   height,
   fill,

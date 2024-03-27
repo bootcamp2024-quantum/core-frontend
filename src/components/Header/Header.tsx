@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
 
+import { ROUTES } from '../../Routing/routes';
+import logo from '../../assets/csa-logo-desktop.svg';
+import { selectIsLoggedIn } from '../../store/user/selectors';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
 import SearchBar from './SearchBar/SearchBar';
-import { ROUTES } from '../../Routing/routes';
-import logo from '../../assets/csa-logo-desktop.svg';
-import sprite from '../../assets/sprite.svg';
-import { selectIsLoggedIn } from '../../store/user/selectors';
 
+import Button, { buttonVariant } from '../Button';
+import Icon from '../Icon';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -61,31 +62,35 @@ const Header = () => {
             className={styles.headerNavMenu}
             style={{ display: isNavVisible ? 'flex' : 'none' }}
           >
-            {navItems.map((item, index) => (
-              <li
-                key={index}
-                className={
-                  location.pathname === item.route ? styles.active : ''
-                }
-              >
-                <NavLink to={item.route} className={styles.navMenuItem}>
-                  {item.text}
-                </NavLink>
-              </li>
-            ))}
+            {navItems.map((item, index) => {
+              const activeStyle =
+                location.pathname === item.route ? styles.active : '';
+              return (
+                <li key={index} className={activeStyle}>
+                  <NavLink
+                    to={item.route}
+                    className={buttonVariant({
+                      size: 'xsm',
+                      variant: 'ghost',
+                      className: styles.searchBarBtn,
+                    })}
+                  >
+                    {item.text}
+                  </NavLink>
+                </li>
+              );
+            })}
             <li>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="xsm"
                 className={styles.searchBarBtn}
                 onClick={handleSearchClick}
+                icon={<Icon id="search" className={styles.searchIcon} />}
               >
                 Search
-                <span>
-                  <svg className={styles.searchIcon}>
-                    <use xlinkHref={`${sprite}#search`} />
-                  </svg>
-                </span>{' '}
-              </button>
+              </Button>
             </li>
           </ul>
         )}

@@ -1,12 +1,12 @@
+import { useNavigate } from 'react-router';
+import { ROUTES } from '../../Routing/routes';
 import Button from '../../components/Button';
-import LoginForm from '../../components/LoginForm/LoginForm';
 import Container from '../../components/Container';
+import LoginForm from '../../components/LoginForm/LoginForm';
 import NetworkButtons from '../../components/NetworkButtons';
 import OverlinedText from '../../components/OverlinedText';
 import PageTitle from '../../components/PageTitle';
 import styles from './LoginPage.module.css';
-import { useNavigate } from 'react-router';
-import { ROUTES } from '../../Routing/routes';
 
 const LoginPage = () => {
   const navigate = useNavigate();
