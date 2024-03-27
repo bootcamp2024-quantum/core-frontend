@@ -6,7 +6,7 @@ import OverlinedText from '../../components/OverlinedText';
 import PageTitle from '../../components/PageTitle';
 import styles from './LoginPage.module.css';
 import { useNavigate } from 'react-router';
-import { ROUTES } from '../../routing/routes';
+import { ROUTES } from '../../Routing/routes';
 
 const LoginPage = () => {
   const navigate = useNavigate();

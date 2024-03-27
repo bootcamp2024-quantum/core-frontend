@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
 import SearchBar from './SearchBar/SearchBar';
-import { ROUTES } from '../../routing/routes';
+import { ROUTES } from '../../Routing/routes';
 import logo from '../../assets/csa-logo-desktop.svg';
 import sprite from '../../assets/sprite.svg';
 import { selectIsLoggedIn } from '../../store/user/selectors';

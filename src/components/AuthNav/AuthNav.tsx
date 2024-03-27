@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ROUTES } from '../../routing/routes';
+import { ROUTES } from '../../Routing/routes';
 
 import styles from './AuthNav.module.css';
 

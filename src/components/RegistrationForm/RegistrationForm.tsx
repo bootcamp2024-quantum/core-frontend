@@ -16,7 +16,7 @@ import Input from '../Input';
 import Spiner from '../Spiner';
 import styles from './RegistrationForm.module.css';
 import toast from 'react-hot-toast';
-import { ROUTES } from '../../routing/routes';
+import { ROUTES } from '../../Routing/routes';
 import { useNavigate } from 'react-router';
 
 const RegistrationForm = () => {
