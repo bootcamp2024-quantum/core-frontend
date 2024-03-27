@@ -51,8 +51,8 @@ const RegistrationForm = () => {
           return;
         }
 
-        reset();
         navigate(ROUTES.PROFILE);
+        reset();
       })
       .finally(() => setIsSubmitting(false));
   };
