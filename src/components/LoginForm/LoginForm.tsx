@@ -1,18 +1,25 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
-import Input from '../Input';
 import { useAppDispatch } from '../../hooks/redux';
 import { loginSchema } from '../../schemas';
 import { login } from '../../store/user/thunks';
 import { UserCredentials } from '../../types';
+import Input from '../Input';
+import Spiner from '../Spiner';
 import styles from './LoginForm.module.css';
+import { ROUTES } from '../../routing/routes';
 
 const LoginForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -21,9 +28,23 @@ const LoginForm = () => {
   } = useForm<UserCredentials>({
     resolver: yupResolver(loginSchema),
   });
+
   const onSubmit: SubmitHandler<UserCredentials> = (data) => {
-    dispatch(login(data));
-    reset();
+    setIsSubmitting(true);
+
+    dispatch(login(data))
+      .then((res) => {
+        if (res.type.includes('rejected')) {
+          toast.error(res.payload as string);
+          return;
+        }
+
+        reset();
+        navigate(ROUTES.PROFILE);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -48,12 +69,15 @@ const LoginForm = () => {
           />
         }
       />
-
       <Button
         type="submit"
         size="lg"
         variant="primary"
+        disabled={isSubmitting}
         className={styles.loginButton}
+        icon={
+          isSubmitting ? <Spiner containerClassName={styles.spiner} /> : null
+        }
       >
         Submit
       </Button>

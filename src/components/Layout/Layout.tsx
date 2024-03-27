@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { Toaster } from 'react-hot-toast';
 
 const Layout = () => {
   const location = useLocation();
@@ -15,6 +16,7 @@ const Layout = () => {
       <Header />
       <main>
         <Outlet />
+        <Toaster />
       </main>
       {shouldRenderFooter && <Footer />}
     </>

@@ -5,6 +5,8 @@ import { ROUTES } from './routes';
 import Layout from '../components/Layout/Layout';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import Spiner from '../components/Spiner';
+import styles from './RoutingFallback.module.css';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -20,7 +22,15 @@ const AboutUsPage = lazy(() => import('../pages/AboutUsPage'));
 const Routing = () => {
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <Spiner
+            size={60}
+            borderWidth={6}
+            containerClassName={styles.spinerContainer}
+          />
+        }
+      >
         <Routes>
           <Route element={<Layout />}>
             <Route path={ROUTES.HOME} element={<HomePage />} />

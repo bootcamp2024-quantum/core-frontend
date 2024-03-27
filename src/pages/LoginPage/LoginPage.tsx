@@ -5,8 +5,12 @@ import NetworkButtons from '../../components/NetworkButtons';
 import OverlinedText from '../../components/OverlinedText';
 import PageTitle from '../../components/PageTitle';
 import styles from './LoginPage.module.css';
+import { useNavigate } from 'react-router';
+import { ROUTES } from '../../routing/routes';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <div className={styles.formContainer}>
@@ -19,7 +23,10 @@ const LoginPage = () => {
         <NetworkButtons googleCallback={() => {}} linkedinCallback={() => {}} />
 
         <p className={styles.text}>
-          Don't have an account? <Button variant="link">SIGN UP</Button>
+          Don't have an account?{' '}
+          <Button variant="link" onClick={() => navigate(ROUTES.REGISTER)}>
+            SIGN UP
+          </Button>
         </p>
       </div>
     </Container>
