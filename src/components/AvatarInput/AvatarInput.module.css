@@ -93,8 +93,6 @@ input[type='file'] {
 }
 
 .uploadIcon {
-  width: 33px;
-  height: 32px;
   display: block;
   fill: var(--text-primary);
 }

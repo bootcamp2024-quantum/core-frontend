@@ -10,7 +10,7 @@ import logo from '../../assets/csa-logo-desktop.svg';
 import sprite from '../../assets/sprite.svg';
 import { selectIsLoggedIn } from '../../store/user/selectors';
 
-import css from './Header.module.css';
+import styles from './Header.module.css';
 
 const Header = () => {
   const isAuthenticated = useSelector(selectIsLoggedIn);
@@ -49,24 +49,26 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={css.header}>
+    <header className={styles.header}>
       <a href={'/'} target="_blank" rel="noopener noreferrer">
         <img src={logo} alt="Career Skill Atlas logo" />
       </a>
-      <div className={css.headerMenu}>
+      <div className={styles.headerMenu}>
         {isSearchVisible ? (
           <SearchBar onClose={handleSearchClose} />
         ) : (
           <ul
-            className={css.headerNavMenu}
+            className={styles.headerNavMenu}
             style={{ display: isNavVisible ? 'flex' : 'none' }}
           >
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className={location.pathname === item.route ? css.active : ''}
+                className={
+                  location.pathname === item.route ? styles.active : ''
+                }
               >
-                <NavLink to={item.route} className={css.navMenuItem}>
+                <NavLink to={item.route} className={styles.navMenuItem}>
                   {item.text}
                 </NavLink>
               </li>
@@ -74,12 +76,12 @@ const Header = () => {
             <li>
               <button
                 type="button"
-                className={css.searchBarBtn}
+                className={styles.searchBarBtn}
                 onClick={handleSearchClick}
               >
                 Search
                 <span>
-                  <svg className={css.searchIcon}>
+                  <svg className={styles.searchIcon}>
                     <use xlinkHref={`${sprite}#search`} />
                   </svg>
                 </span>{' '}

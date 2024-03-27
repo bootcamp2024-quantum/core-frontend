@@ -5,25 +5,25 @@ import { ROUTES } from '../../routing/routes';
 import { selectUser } from '../../store/user/selectors';
 import sprite from '../../assets/sprite.svg';
 
-import css from './UserNav.module.css';
+import styles from './UserNav.module.css';
 
 const UserNav = () => {
   const user = useSelector(selectUser);
 
   return (
-    <div className={css.userBlock}>
-      <div className={css.userInfo}>
+    <div className={styles.userBlock}>
+      <div className={styles.userInfo}>
         {user.avatar ? (
-          <img src={user.avatar} alt="User avatar" className={css.userAva} />
+          <img src={user.avatar} alt="User avatar" className={styles.userAva} />
         ) : (
-          <svg className={css.userIcon}>
+          <svg className={styles.userIcon}>
             <use xlinkHref={`${sprite}#user`} />
           </svg>
         )}
-        <p className={css.userName}>{user.name || 'User'}</p>
+        <p className={styles.userName}>{user.name || 'User'}</p>
       </div>
-      <Link to={ROUTES.PROFILE} className={css.arrowLink}>
-        <svg className={css.arrowIcon}>
+      <Link to={ROUTES.PROFILE} className={styles.arrowLink}>
+        <svg className={styles.arrowIcon}>
           <use xlinkHref={`${sprite}#arrow-down`} />
         </svg>
       </Link>

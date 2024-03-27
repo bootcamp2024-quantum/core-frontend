@@ -7,16 +7,16 @@ import OverlinedText from '../../components/OverlinedText';
 import RoadImage from '../../components/RoadImage/RoadImage';
 import { ROUTES } from '../../routing/routes';
 
-import css from './RegistrationPage.module.css';
+import styles from './RegistrationPage.module.css';
 
 const RegistrationPage = () => {
   return (
-    <div className={css.register}>
-      <div className={css.registerWrapper}>
+    <div className={styles.register}>
+      <div className={styles.registerWrapper}>
         <RegistrationForm />
-        <div className={css.socialWrapper}>
+        <div className={styles.socialWrapper}>
           <OverlinedText>or sign up with</OverlinedText>
-          <div className={css.socialBtns}>
+          <div className={styles.socialBtns}>
             <Button
               variant="secondary"
               size="xsm"
@@ -25,19 +25,19 @@ const RegistrationPage = () => {
             <Button
               variant="secondary"
               size="xsm"
-              className={css.linkedinButton}
+              className={styles.linkedinButton}
               icon={<Icon id="linkedin" />}
             />
           </div>
-          <p className={css.text}>
+          <p className={styles.text}>
             Already have an account?
-            <Link to={ROUTES.LOGIN} className={css.linkLogIn}>
+            <Link to={ROUTES.LOGIN} className={styles.linkLogIn}>
               LOG IN
             </Link>
           </p>
         </div>
       </div>
-      <RoadImage className={css.road} />
+      <RoadImage className={styles.road} />
     </div>
   );
 };

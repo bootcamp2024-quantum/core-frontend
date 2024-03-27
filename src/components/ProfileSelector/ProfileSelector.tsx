@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react';
-import css from './ProfileSelector.module.css';
+import styles from './ProfileSelector.module.css';
 
 interface SelectorProps {
   onSelect: (value: string) => void;
@@ -20,15 +20,15 @@ const Selector = ({ onSelect }: SelectorProps) => {
       id="userSelector"
       value={selectedOption}
       onChange={handleSelectChange}
-      className={css.selector}
+      className={styles.selector}
       aria-label="Profile Selector"
     >
       {selectedOption === 'profile' ? (
-        <option value="profile" className={css.option}>
+        <option value="profile" className={styles.option}>
           Profile
         </option>
       ) : (
-        <option value="activity" className={css.option}>
+        <option value="activity" className={styles.option}>
           Activity
         </option>
       )}

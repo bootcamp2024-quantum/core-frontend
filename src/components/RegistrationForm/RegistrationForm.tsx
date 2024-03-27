@@ -1,22 +1,28 @@
-import React, { useState, useRef } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useRef, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import Input from '../Input';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
-import AvatarInput from '../AvatarInput/AvatarInput';
+import { useAppDispatch } from '../../hooks/redux';
 import {
   RegisterPropsType,
   registerSchema,
 } from '../../schemas/registerSchema';
 import { register } from '../../store/user/thunks';
-import { useAppDispatch } from '../../hooks/redux';
+import AvatarInput from '../AvatarInput/AvatarInput';
+import Input from '../Input';
 
-import css from './RegistrationForm.module.css';
+import Spiner from '../Spiner';
+import styles from './RegistrationForm.module.css';
+import toast from 'react-hot-toast';
+import { ROUTES } from '../../routing/routes';
+import { useNavigate } from 'react-router';
 
 const RegistrationForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const {
@@ -32,11 +38,23 @@ const RegistrationForm = () => {
   });
 
   const onSubmit: SubmitHandler<RegisterPropsType> = (data) => {
+    setIsSubmitting(true);
+
     if (avatarFile) {
       data.avatar = avatarFile;
     }
-    dispatch(register(data));
-    reset();
+
+    dispatch(register(data))
+      .then((res) => {
+        if (res.type.includes('rejected')) {
+          toast.error(res.payload as string);
+          return;
+        }
+
+        reset();
+        navigate(ROUTES.PROFILE);
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -60,11 +78,14 @@ const RegistrationForm = () => {
   const [avatarImagePath, setAvatarImagePath] = useState<string>('');
 
   return (
-    <section className={css.form}>
-      <h2 className={css.registerTitle}>Sign up</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.divFormRegister}>
-        <div className={css.formWrapper}>
-          <div className={css.registerGroup}>
+    <section className={styles.form}>
+      <h2 className={styles.registerTitle}>Sign up</h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.divFormRegister}
+      >
+        <div className={styles.formWrapper}>
+          <div className={styles.registerGroup}>
             <Input
               register={formRegister('username')}
               placeholder="Name and surname"
@@ -82,9 +103,9 @@ const RegistrationForm = () => {
               error={errors.password?.message}
               icon={
                 <Icon
-                  className={css.eyeIcon}
+                  className={styles.eyeIcon}
                   id={shouldShowPassword ? 'eye' : 'eye-closed'}
-                  boxStyles={css.iconBox}
+                  boxStyles={styles.iconBox}
                   onClick={() => {
                     setShouldShowPassword((p) => !p);
                   }}
@@ -98,9 +119,9 @@ const RegistrationForm = () => {
               error={errors.repeat_password?.message}
               icon={
                 <Icon
-                  className={css.eyeIcon}
+                  className={styles.eyeIcon}
                   id={shouldShowPassword ? 'eye' : 'eye-closed'}
-                  boxStyles={css.iconBox}
+                  boxStyles={styles.iconBox}
                   onClick={() => {
                     setShouldShowPassword((p) => !p);
                   }}
@@ -119,7 +140,11 @@ const RegistrationForm = () => {
           type="submit"
           size="lg"
           variant="primary"
-          className={css.loginButton}
+          disabled={isSubmitting}
+          className={styles.loginButton}
+          icon={
+            isSubmitting ? <Spiner containerClassName={styles.spiner} /> : null
+          }
         >
           Submit
         </Button>

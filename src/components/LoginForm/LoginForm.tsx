@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import { useAppDispatch } from '../../hooks/redux';
+import { ROUTES } from '../../routing/routes';
 import { loginSchema } from '../../schemas';
 import { login } from '../../store/user/thunks';
 import { UserCredentials } from '../../types';
 import Input from '../Input';
 import Spiner from '../Spiner';
 import styles from './LoginForm.module.css';
-import { ROUTES } from '../../routing/routes';
 
 const LoginForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
@@ -42,9 +42,7 @@ const LoginForm = () => {
         reset();
         navigate(ROUTES.PROFILE);
       })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+      .finally(() => setIsSubmitting(false));
   };
 
   return (

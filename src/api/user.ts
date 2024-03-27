@@ -24,7 +24,7 @@ export const getUserToken = async (credentials: UserCredentials) => {
 export const getUserById = async (id: string | number): Promise<User> => {
   const {
     data: { username, pk, email, avatar },
-  } = await axios.get(`/users/${id}`);
+  } = await axios.get(`/users/${id}/`);
 
   return {
     username,
