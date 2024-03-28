@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import { useAppDispatch } from '../../hooks/redux';
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 import { loginSchema } from '../../schemas';
 import { login } from '../../store/user/thunks';
 import { UserCredentials } from '../../types';
 import Input from '../Input';
-import Spiner from '../Spiner';
+import Spinner from '../Spinner';
 import styles from './LoginForm.module.css';
 
 const LoginForm = () => {
@@ -74,7 +74,7 @@ const LoginForm = () => {
         disabled={isSubmitting}
         className={styles.loginButton}
         icon={
-          isSubmitting ? <Spiner containerClassName={styles.spiner} /> : null
+          isSubmitting ? <Spinner containerClassName={styles.Spinner} /> : null
         }
       >
         Submit

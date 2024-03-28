@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 import { selectUser } from '../../store/user/selectors';
 import sprite from '../../assets/sprite.svg';
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 import logo from '../../assets/csa-logo-desktop.svg';
 import { selectIsLoggedIn } from '../../store/user/selectors';
 import AuthNav from '../AuthNav/AuthNav';

@@ -1,30 +1,31 @@
 import axios from 'axios';
-import { Token, User, UserCredentials } from '../types';
+import { getUserToken, setToken } from '.';
+import { RegisterPropsType } from '../schemas';
+import { User, UserCredentials } from '../types';
+import { ROUTES } from './constants';
 
-type TokenResponseType = Required<
-  Token & {
-    id: string | number;
-  }
->;
+export const createUser = async (credentials: RegisterPropsType) => {
+  await axios.post(ROUTES.USERS, credentials);
 
-export const getUserToken = async (credentials: UserCredentials) => {
-  const {
-    data: { refresh, access, user_id },
-  } = await axios.post('/token/', credentials);
+  return true;
+};
 
-  const token: TokenResponseType = {
-    refresh,
-    access,
-    id: user_id,
-  };
+export const loginUser = async (credentials: UserCredentials) => {
+  const { access, refresh, id } = await getUserToken(credentials);
 
-  return token;
+  // set access token to axios environments
+  setToken(access);
+
+  // getting user with /users/{userId} api route
+  const user = await getUserById(id);
+
+  return { user, token: { access, refresh } };
 };
 
 export const getUserById = async (id: string | number): Promise<User> => {
   const {
     data: { username, pk, email, avatar },
-  } = await axios.get(`/users/${id}/`);
+  } = await axios.get(`${ROUTES.USERS}${id}/`);
 
   return {
     username,

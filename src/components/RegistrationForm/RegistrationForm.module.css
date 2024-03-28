@@ -29,7 +29,7 @@
 
 .eyeIcon {
   position: absolute;
-  top: 16px;
+  top: 14px;
   right: 20px;
   opacity: 0.8;
   cursor: pointer;
@@ -46,6 +46,6 @@
   margin: 0 auto;
 }
 
-.spiner {
+.Spinner {
   margin-left: 4px;
 }

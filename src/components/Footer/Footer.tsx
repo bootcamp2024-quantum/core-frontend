@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Icon from '../Icon';
 import SocialList from './SocialList/SocialList';
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 import logo from '../../assets/cluster-logo.svg';
 
 import styles from './Footer.module.css';

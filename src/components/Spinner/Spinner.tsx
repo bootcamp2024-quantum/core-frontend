@@ -1,18 +1,18 @@
-import styles from './Spiner.module.css';
+import styles from './Spinner.module.css';
 
-interface SpinerProps {
+interface SpinnerProps {
   className?: string;
   containerClassName?: string;
   size?: number;
   borderWidth?: number;
 }
 
-const Spiner = ({
+const Spinner = ({
   className = '',
   containerClassName = '',
   size = 30,
   borderWidth = 4,
-}: SpinerProps) => {
+}: SpinnerProps) => {
   const containerStyle = size
     ? { width: `${size}px`, height: `${size}px` }
     : undefined;
@@ -29,4 +29,4 @@ const Spiner = ({
   );
 };
 
-export default Spiner;
+export default Spinner;

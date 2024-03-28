@@ -1,10 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
-import { setToken } from '../../api';
-import { getUserById, getUserToken } from '../../api/user';
+import { AxiosError } from 'axios';
+import { createUser, loginUser } from '../../api';
+import { RegisterPropsType } from '../../schemas';
 import { UserCredentials } from '../../types';
 import { UserState } from './slice';
-import { RegisterPropsType } from '../../schemas';
 
 export const register = createAsyncThunk<
   Pick<UserState, 'user' | 'token'>,
@@ -16,18 +15,14 @@ export const register = createAsyncThunk<
   try {
     const { email, password } = credentials;
 
-    await axios.post('/users/', credentials);
+    await createUser(credentials);
 
-    const { access, refresh, id } = await getUserToken({ email, password });
+    const user = await loginUser({ email, password });
 
-    setToken(access);
-
-    const user = await getUserById(id);
-
-    return { user, token: { access, refresh } };
+    return user;
   } catch (err) {
     return thunkAPI.rejectWithValue(
-      (err as AxiosError).message || 'Log in failed: Unknown error',
+      (err as AxiosError).message || 'Registration failed: Unknown error',
     );
   }
 });
@@ -38,21 +33,14 @@ export const login = createAsyncThunk<
   {
     rejectValue: string;
   }
->('user/login', async ({ email, password }, thunkAPI) => {
+>('user/login', async (credentials, thunkAPI) => {
   try {
-    // login user with /token api route
-    const { access, refresh, id } = await getUserToken({ email, password });
+    const user = await loginUser(credentials);
 
-    // set access token to axios environments
-    setToken(access);
-
-    // getting user with /users/{userId} api route
-    const user = await getUserById(id);
-
-    return { user, token: { access, refresh } };
+    return user;
   } catch (err) {
     return thunkAPI.rejectWithValue(
-      (err as AxiosError).message || 'Registration failed: Unknown error',
+      (err as AxiosError).message || 'Log in failed: Unknown error',
     );
   }
 });

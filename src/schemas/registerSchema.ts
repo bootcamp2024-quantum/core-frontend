@@ -1,16 +1,21 @@
 import * as yup from 'yup';
+import { LIMITS, MESSAGES } from './constants';
 
 // const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 // const FILE_SIZE = 2000000; // 2MB
 
 export const registerSchema = yup.object().shape({
-  username: yup.string().required('Name is required!'),
-  email: yup.string().email().required('Email is required!'),
-  password: yup.string().min(8).max(20).required('Password is required!'),
+  username: yup.string().required(MESSAGES.NAME_REQUIRED),
+  email: yup.string().email().required(MESSAGES.EMAIL_REQUIRED),
+  password: yup
+    .string()
+    .min(LIMITS.PASSWORD[0])
+    .max(LIMITS.PASSWORD[1])
+    .required(MESSAGES.PASSWORD_REQUIRED),
   repeat_password: yup
     .string()
-    .oneOf([yup.ref('password')], 'Passwords must match')
-    .required('Please confirm your password'),
+    .oneOf([yup.ref('password')], MESSAGES.PASSWORD_REPEAT)
+    .required(MESSAGES.PASSWORD_REPEAT_REQUIRED),
   avatar: yup.mixed().notRequired(),
   // .test('fileSize', 'The file is too large', (value) => {
   //   /// @ts-expect-error

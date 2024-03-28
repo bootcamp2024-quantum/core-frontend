@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 
 import { buttonVariant } from '../Button/Button';
 import styles from './AuthNav.module.css';

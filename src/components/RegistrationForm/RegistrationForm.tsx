@@ -13,14 +13,16 @@ import { register } from '../../store/user/thunks';
 import AvatarInput from '../AvatarInput/AvatarInput';
 import Input from '../Input';
 
-import Spiner from '../Spiner';
-import styles from './RegistrationForm.module.css';
 import toast from 'react-hot-toast';
-import { ROUTES } from '../../Routing/routes';
 import { useNavigate } from 'react-router';
+import { ROUTES } from '../../routing/routes';
+import Spinner from '../Spinner';
+import styles from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
+  const [shouldShowRepeatPassword, setShouldShowRepeatPassword] =
+    useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -115,15 +117,15 @@ const RegistrationForm = () => {
             <Input
               register={formRegister('repeat_password')}
               placeholder="Confirm password"
-              type={shouldShowPassword ? 'text' : 'password'}
+              type={shouldShowRepeatPassword ? 'text' : 'password'}
               error={errors.repeat_password?.message}
               icon={
                 <Icon
                   className={styles.eyeIcon}
-                  id={shouldShowPassword ? 'eye' : 'eye-closed'}
+                  id={shouldShowRepeatPassword ? 'eye' : 'eye-closed'}
                   boxStyles={styles.iconBox}
                   onClick={() => {
-                    setShouldShowPassword((p) => !p);
+                    setShouldShowRepeatPassword((p) => !p);
                   }}
                 />
               }
@@ -143,7 +145,9 @@ const RegistrationForm = () => {
           disabled={isSubmitting}
           className={styles.loginButton}
           icon={
-            isSubmitting ? <Spiner containerClassName={styles.spiner} /> : null
+            isSubmitting ? (
+              <Spinner containerClassName={styles.Spinner} />
+            ) : null
           }
         >
           Submit

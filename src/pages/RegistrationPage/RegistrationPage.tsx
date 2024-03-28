@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 import OverlinedText from '../../components/OverlinedText';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import RoadImage from '../../components/RoadImage/RoadImage';

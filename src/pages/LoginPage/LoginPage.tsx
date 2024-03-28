@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { ROUTES } from '../../Routing/routes';
+import { ROUTES } from '../../routing/routes';
 import Button from '../../components/Button';
 import Container from '../../components/Container';
 import LoginForm from '../../components/LoginForm/LoginForm';
