@@ -1,43 +1,34 @@
 import { Link } from 'react-router-dom';
 
-import Button from '../../components/Button';
-import Icon from '../../components/Icon';
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
-import OverlinedText from '../../components/OverlinedText';
-import RoadImage from '../../components/RoadImage/RoadImage';
 import { ROUTES } from '../../routing/routes';
+import OverlinedText from '../../components/OverlinedText';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import RoadImage from '../../components/RoadImage/RoadImage';
 
-import css from './RegistrationPage.module.css';
+import NetworkButtons from '../../components/NetworkButtons';
+import styles from './RegistrationPage.module.css';
 
 const RegistrationPage = () => {
   return (
-    <div className={css.register}>
-      <div className={css.registerWrapper}>
+    <div className={styles.register}>
+      <div className={styles.registerWrapper}>
         <RegistrationForm />
-        <div className={css.socialWrapper}>
+        <div className={styles.socialWrapper}>
           <OverlinedText>or sign up with</OverlinedText>
-          <div className={css.socialBtns}>
-            <Button
-              variant="secondary"
-              size="xsm"
-              icon={<Icon id="google" />}
-            />
-            <Button
-              variant="secondary"
-              size="xsm"
-              className={css.linkedinButton}
-              icon={<Icon id="linkedin" />}
-            />
-          </div>
-          <p className={css.text}>
+          <NetworkButtons
+            className={styles.socialBtns}
+            googleCallback={() => {}}
+            linkedinCallback={() => {}}
+          />
+          <p className={styles.text}>
             Already have an account?
-            <Link to={ROUTES.LOGIN} className={css.linkLogIn}>
+            <Link to={ROUTES.LOGIN} className={styles.linkLogIn}>
               LOG IN
             </Link>
           </p>
         </div>
       </div>
-      <RoadImage className={css.road} />
+      <RoadImage className={styles.road} />
     </div>
   );
 };

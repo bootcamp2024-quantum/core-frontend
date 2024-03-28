@@ -1,10 +1,14 @@
-import { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 
-import { ROUTES } from './routes';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import { ROUTES } from './routes';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -18,50 +22,46 @@ const RoadmapsPage = lazy(() => import('../pages/RoadmapsPage'));
 const AboutUsPage = lazy(() => import('../pages/AboutUsPage'));
 
 const Routing = () => {
-  return (
-    <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path={ROUTES.HOME} element={<HomePage />} />
-            <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
-            <Route
-              path={ROUTES.ROADMAPS}
-              element={
-                <PrivateRoute>
-                  <RoadmapsPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path={ROUTES.REGISTER}
-              element={
-                <PublicRoute>
-                  <RegistrationPage />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path={ROUTES.LOGIN}
-              element={
-                <PublicRoute>
-                  <LoginPage />
-                </PublicRoute>
-              }
-            />
+  return createBrowserRouter(
+    createRoutesFromElements(
+      <Route path={ROUTES.HOME} element={<Layout />}>
+        <Route path={ROUTES.HOME} element={<HomePage />} />
+        <Route path={ROUTES.ABOUT_US} element={<AboutUsPage />} />
+        <Route
+          path={ROUTES.ROADMAPS}
+          element={
+            <PrivateRoute>
+              <RoadmapsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.REGISTER}
+          element={
+            <PublicRoute>
+              <RegistrationPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path={ROUTES.LOGIN}
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
 
-            <Route
-              path={ROUTES.PROFILE}
-              element={
-                <PublicRoute>
-                  <EditProfilePage />
-                </PublicRoute>
-              }
-            />
-          </Route>
-        </Routes>
-      </Suspense>
-    </Router>
+        <Route
+          path={ROUTES.PROFILE}
+          element={
+            <PublicRoute>
+              <EditProfilePage />
+            </PublicRoute>
+          }
+        />
+      </Route>,
+    ),
   );
 };
 

@@ -3,16 +3,18 @@ import Icon from '../Icon';
 import styles from './NetworkButtons.module.css';
 
 interface NetworkButtonsProps {
+  className?: string;
   googleCallback: () => void;
   linkedinCallback: () => void;
 }
 
 const NetworkButtons = ({
+  className = '',
   googleCallback,
   linkedinCallback,
 }: NetworkButtonsProps) => {
   return (
-    <div className={styles.buttonsGroup}>
+    <div className={`${styles.buttonsGroup} ${className}`}>
       <Button
         onClick={googleCallback}
         variant="secondary"

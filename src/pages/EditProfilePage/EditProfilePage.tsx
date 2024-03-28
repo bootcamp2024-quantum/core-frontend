@@ -4,7 +4,7 @@ import { selectUser } from '../../store/user/selectors';
 import ProfileSelector from '../../components/ProfileSelector/ProfileSelector';
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm';
 
-import css from './EditProfilePage.module.css';
+import styles from './EditProfilePage.module.css';
 
 const EditProfilePage = () => {
   const user = useSelector(selectUser);
@@ -19,9 +19,9 @@ const EditProfilePage = () => {
 
   return (
     <section>
-      <div className={css.profile}>
-        <div className={css.generalBlock}>
-          <h2 className={css.profileTitle}>{greeting}</h2>
+      <div className={styles.profile}>
+        <div className={styles.generalBlock}>
+          <h2 className={styles.profileTitle}>{greeting}</h2>
           <ProfileSelector onSelect={handleSelect} />
         </div>
         <EditProfileForm />

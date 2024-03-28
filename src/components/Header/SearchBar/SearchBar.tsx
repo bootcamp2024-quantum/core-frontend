@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import sprite from '../../../assets/sprite.svg';
 
-import css from './SearchBar.module.css';
+import styles from './SearchBar.module.css';
 
 interface SearchBarProps {
   onClose: () => void;
@@ -21,10 +21,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
   };
 
   return (
-    <div className={isSearchOpen ? css.searchBar : css.searchBarClosed}>
-      <form className={css.form} onSubmit={handleSubmit}>
+    <div className={isSearchOpen ? styles.searchBar : styles.searchBarClosed}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
-          className={css.input}
+          className={styles.input}
           type="text"
           autoComplete="off"
           autoFocus
@@ -32,10 +32,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
         />
         <button
           type="submit"
-          className={css.button}
+          className={styles.button}
           onClick={handleButtonClick}
         >
-          <svg className={css.searchIcon}>
+          <svg className={styles.searchIcon}>
             <use xlinkHref={`${sprite}#search`} />
           </svg>
         </button>

@@ -1,8 +1,8 @@
-import css from './EditProfileForm.module.css';
+import styles from './EditProfileForm.module.css';
 
 const EditProfileForm = () => {
   return (
-    <section className={css.form}>
+    <section className={styles.form}>
       <form></form>
     </section>
   );

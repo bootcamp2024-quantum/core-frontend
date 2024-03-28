@@ -1,20 +1,31 @@
-import React, { useState, useRef } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useRef, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import Input from '../Input';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import {
+  RegisterPropsType,
+  registerSchema,
+} from '../../schemas/registerSchema';
+import { login, register } from '../../store/user/thunks';
 import AvatarInput from '../AvatarInput/AvatarInput';
-import { FormData } from '../../types';
-import { registerSchema } from '../../schemas/registerSchema';
-import { register } from '../../store/user/thunks';
-import { useAppDispatch } from '../../hooks/redux';
+import Input from '../Input';
 
-import css from './RegistrationForm.module.css';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
+import { ROUTES } from '../../routing/routes';
+import { selectIsLoading } from '../../store/user/selectors';
+import Spinner from '../Spinner';
+import styles from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
+  const [shouldShowRepeatPassword, setShouldShowRepeatPassword] =
+    useState(false);
+  const isLoading = useAppSelector(selectIsLoading);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const {
@@ -22,16 +33,31 @@ const RegistrationForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>({
+  } = useForm<RegisterPropsType>({
     resolver: yupResolver(registerSchema),
+    defaultValues: {
+      avatar: null,
+    },
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<RegisterPropsType> = async (data) => {
     if (avatarFile) {
       data.avatar = avatarFile;
     }
-    dispatch(register(data));
-    reset();
+
+    const { payload } = await dispatch(register(data));
+    if (payload === true) {
+      const { payload: res } = await dispatch(
+        login({ email: data.email, password: data.password }),
+      );
+
+      if (typeof res !== 'string') {
+        navigate(ROUTES.PROFILE);
+        reset();
+      } else {
+        toast.error(res);
+      }
+    }
   };
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -55,15 +81,19 @@ const RegistrationForm = () => {
   const [avatarImagePath, setAvatarImagePath] = useState<string>('');
 
   return (
-    <section className={css.form}>
-      <h2 className={css.registerTitle}>Sign up</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.divFormRegister}>
-        <div className={css.formWrapper}>
-          <div className={css.registerGroup}>
+    <section className={styles.form}>
+      <h2 className={styles.registerTitle}>Sign up</h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.divFormRegister}
+        encType="multipart/form-data"
+      >
+        <div className={styles.formWrapper}>
+          <div className={styles.registerGroup}>
             <Input
-              register={formRegister('name')}
+              register={formRegister('username')}
               placeholder="Name and surname"
-              error={errors.name?.message}
+              error={errors.username?.message}
             />
             <Input
               register={formRegister('email')}
@@ -77,9 +107,9 @@ const RegistrationForm = () => {
               error={errors.password?.message}
               icon={
                 <Icon
-                  className={css.eyeIcon}
+                  className={styles.eyeIcon}
                   id={shouldShowPassword ? 'eye' : 'eye-closed'}
-                  boxStyles={css.iconBox}
+                  boxStyles={styles.iconBox}
                   onClick={() => {
                     setShouldShowPassword((p) => !p);
                   }}
@@ -87,17 +117,17 @@ const RegistrationForm = () => {
               }
             />
             <Input
-              register={formRegister('confirm_password')}
+              register={formRegister('repeat_password')}
               placeholder="Confirm password"
-              type={shouldShowPassword ? 'text' : 'password'}
-              error={errors.confirm_password?.message}
+              type={shouldShowRepeatPassword ? 'text' : 'password'}
+              error={errors.repeat_password?.message}
               icon={
                 <Icon
-                  className={css.eyeIcon}
-                  id={shouldShowPassword ? 'eye' : 'eye-closed'}
-                  boxStyles={css.iconBox}
+                  className={styles.eyeIcon}
+                  id={shouldShowRepeatPassword ? 'eye' : 'eye-closed'}
+                  boxStyles={styles.iconBox}
                   onClick={() => {
-                    setShouldShowPassword((p) => !p);
+                    setShouldShowRepeatPassword((p) => !p);
                   }}
                 />
               }
@@ -110,16 +140,18 @@ const RegistrationForm = () => {
             fileInputRef={fileInputRef}
           />
         </div>
-        <div>
-          <Button
-            type="submit"
-            size="lg"
-            variant="primary"
-            className={css.loginButton}
-          >
-            Submit
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          size="lg"
+          variant="primary"
+          disabled={isLoading}
+          className={styles.loginButton}
+          icon={
+            isLoading ? <Spinner containerClassName={styles.spinner} /> : null
+          }
+        >
+          Submit
+        </Button>
       </form>
     </section>
   );

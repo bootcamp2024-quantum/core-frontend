@@ -1,10 +1,9 @@
 import React from 'react';
 
-import Icon from '../../components/Icon';
 import Button from '../../components/Button';
-import sprite from '../../assets/sprite.svg';
+import Icon from '../../components/Icon';
 
-import css from './AvatarInput.module.css';
+import styles from './AvatarInput.module.css';
 
 interface AvatarInputProps {
   handleAvatarChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,37 +19,35 @@ const AvatarInput = ({
   fileInputRef,
 }: AvatarInputProps) => {
   return (
-    <div className={css.photoBlock}>
-      <p className={css.photoTitle}>Photo(optional)</p>
-      <div className={css.divPhotoThumb} onClick={handleFileButtonClick}>
+    <div className={styles.photoBlock}>
+      <p className={styles.photoTitle}>Photo(optional)</p>
+      <div className={styles.divPhotoThumb} onClick={handleFileButtonClick}>
         <input
           ref={fileInputRef}
           id="photo"
-          className={css.photoInput}
+          className="sr-only"
           type="file"
           accept="image/*"
           onChange={handleAvatarChange}
         />
         {avatarImagePath ? (
           <img
-            className={css.photoThumb}
+            className={styles.photoThumb}
             src={avatarImagePath}
             alt="User avatar"
           />
         ) : (
-          <Icon id="user" className={css.userIcon} />
+          <Icon id="user" boxStyles={styles.userIcon} size={100} />
         )}
       </div>
       <Button
         type="button"
-        variant="primary"
-        className={css.customFileButton}
+        variant="secondary"
+        size="md"
         onClick={handleFileButtonClick}
+        icon={<Icon id="upload" className={styles.uploadIcon} />}
       >
         Upload
-        <svg className={css.uploadIcon}>
-          <use xlinkHref={`${sprite}#upload`} />
-        </svg>
       </Button>
     </div>
   );

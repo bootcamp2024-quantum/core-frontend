@@ -1,7 +1,10 @@
+import { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Outlet, useLocation } from 'react-router-dom';
-
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import Spinner from '../Spinner';
+import styles from './LayoutFallback.module.css';
 
 const Layout = () => {
   const location = useLocation();
@@ -14,7 +17,18 @@ const Layout = () => {
     <>
       <Header />
       <main>
-        <Outlet />
+        <Suspense
+          fallback={
+            <Spinner
+              size={60}
+              borderWidth={6}
+              containerClassName={styles.spinnerContainer}
+            />
+          }
+        >
+          <Outlet />
+        </Suspense>
+        <Toaster />
       </main>
       {shouldRenderFooter && <Footer />}
     </>

@@ -7,10 +7,10 @@
   align-items: center;
   gap: 16px;
   border: 1px solid transparent;
-  border-radius: 24px;
+  border-radius: 12px;
   color: var(--text-primary);
   text-wrap: wrap;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5;
   transition: var(--transition);
 }
@@ -20,6 +20,10 @@
 .default:active,
 .default:disabled {
   outline: none;
+}
+
+.default:disabled {
+  cursor: not-allowed;
 }
 
 /* BUTTON STYLES */
@@ -133,22 +137,22 @@
 /* SIZES */
 
 .lg {
-  padding: 17px 0;
+  padding: 16px 0;
   width: 320px;
 }
 
 .md {
-  padding: 16px 44px;
+  padding: 15px 44px;
   width: 210px;
 }
 
 .sm {
-  padding: 16px 31px;
+  padding: 15px 32px;
   width: 126px;
 }
 
 .xsm {
-  padding: 15px 31px;
+  padding: 13px 30px;
   width: fit-content;
   height: fit-content;
 }

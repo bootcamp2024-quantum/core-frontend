@@ -1,18 +1,26 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
-import Input from '../Input';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { ROUTES } from '../../routing/routes';
 import { loginSchema } from '../../schemas';
 import { login } from '../../store/user/thunks';
 import { UserCredentials } from '../../types';
+import Input from '../Input';
+import Spinner from '../Spinner';
 import styles from './LoginForm.module.css';
+import { selectIsLoading } from '../../store/user/selectors';
 
 const LoginForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
+  const isLoading = useAppSelector(selectIsLoading);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -21,9 +29,16 @@ const LoginForm = () => {
   } = useForm<UserCredentials>({
     resolver: yupResolver(loginSchema),
   });
-  const onSubmit: SubmitHandler<UserCredentials> = (data) => {
-    dispatch(login(data));
-    reset();
+
+  const onSubmit: SubmitHandler<UserCredentials> = async (data) => {
+    const { payload } = await dispatch(login(data));
+
+    if (typeof payload !== 'string') {
+      navigate(ROUTES.PROFILE);
+      reset();
+    } else {
+      toast.error(payload);
+    }
   };
 
   return (
@@ -48,12 +63,15 @@ const LoginForm = () => {
           />
         }
       />
-
       <Button
         type="submit"
         size="lg"
         variant="primary"
+        disabled={isLoading}
         className={styles.loginButton}
+        icon={
+          isLoading ? <Spinner containerClassName={styles.spinner} /> : null
+        }
       >
         Submit
       </Button>
