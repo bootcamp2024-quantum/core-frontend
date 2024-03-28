@@ -4,18 +4,19 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import {
   RegisterPropsType,
   registerSchema,
 } from '../../schemas/registerSchema';
-import { register } from '../../store/user/thunks';
+import { login, register } from '../../store/user/thunks';
 import AvatarInput from '../AvatarInput/AvatarInput';
 import Input from '../Input';
 
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { ROUTES } from '../../routing/routes';
+import { selectIsLoading } from '../../store/user/selectors';
 import Spinner from '../Spinner';
 import styles from './RegistrationForm.module.css';
 
@@ -23,7 +24,7 @@ const RegistrationForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
   const [shouldShowRepeatPassword, setShouldShowRepeatPassword] =
     useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isLoading = useAppSelector(selectIsLoading);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -39,24 +40,24 @@ const RegistrationForm = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<RegisterPropsType> = (data) => {
-    setIsSubmitting(true);
-
+  const onSubmit: SubmitHandler<RegisterPropsType> = async (data) => {
     if (avatarFile) {
       data.avatar = avatarFile;
     }
 
-    dispatch(register(data))
-      .then((res) => {
-        if (res.type.includes('rejected')) {
-          toast.error(res.payload as string);
-          return;
-        }
+    const { payload } = await dispatch(register(data));
+    if (payload === true) {
+      const { payload: res } = await dispatch(
+        login({ email: data.email, password: data.password }),
+      );
 
+      if (typeof res !== 'string') {
         navigate(ROUTES.PROFILE);
         reset();
-      })
-      .finally(() => setIsSubmitting(false));
+      } else {
+        toast.error(res);
+      }
+    }
   };
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -85,6 +86,7 @@ const RegistrationForm = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={styles.divFormRegister}
+        encType="multipart/form-data"
       >
         <div className={styles.formWrapper}>
           <div className={styles.registerGroup}>
@@ -142,12 +144,10 @@ const RegistrationForm = () => {
           type="submit"
           size="lg"
           variant="primary"
-          disabled={isSubmitting}
+          disabled={isLoading}
           className={styles.loginButton}
           icon={
-            isSubmitting ? (
-              <Spinner containerClassName={styles.Spinner} />
-            ) : null
+            isLoading ? <Spinner containerClassName={styles.spinner} /> : null
           }
         >
           Submit

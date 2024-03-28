@@ -22,7 +22,7 @@ const Layout = () => {
             <Spinner
               size={60}
               borderWidth={6}
-              containerClassName={styles.SpinnerContainer}
+              containerClassName={styles.spinnerContainer}
             />
           }
         >

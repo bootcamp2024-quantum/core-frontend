@@ -1,4 +1,4 @@
-export const ROUTES = {
+export const ENDPOINTS = {
   USERS: '/users/',
   ROADMAPS: '/roadmaps/',
   TOKEN: '/token/',

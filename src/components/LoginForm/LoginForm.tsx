@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { ROUTES } from '../../routing/routes';
 import { loginSchema } from '../../schemas';
 import { login } from '../../store/user/thunks';
@@ -13,10 +13,11 @@ import { UserCredentials } from '../../types';
 import Input from '../Input';
 import Spinner from '../Spinner';
 import styles from './LoginForm.module.css';
+import { selectIsLoading } from '../../store/user/selectors';
 
 const LoginForm = () => {
   const [shouldShowPassword, setShouldShowPassword] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isLoading = useAppSelector(selectIsLoading);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -29,20 +30,15 @@ const LoginForm = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<UserCredentials> = (data) => {
-    setIsSubmitting(true);
+  const onSubmit: SubmitHandler<UserCredentials> = async (data) => {
+    const { payload } = await dispatch(login(data));
 
-    dispatch(login(data))
-      .then((res) => {
-        if (res.type.includes('rejected')) {
-          toast.error(res.payload as string);
-          return;
-        }
-
-        navigate(ROUTES.PROFILE);
-        reset();
-      })
-      .finally(() => setIsSubmitting(false));
+    if (typeof payload !== 'string') {
+      navigate(ROUTES.PROFILE);
+      reset();
+    } else {
+      toast.error(payload);
+    }
   };
 
   return (
@@ -71,10 +67,10 @@ const LoginForm = () => {
         type="submit"
         size="lg"
         variant="primary"
-        disabled={isSubmitting}
+        disabled={isLoading}
         className={styles.loginButton}
         icon={
-          isSubmitting ? <Spinner containerClassName={styles.Spinner} /> : null
+          isLoading ? <Spinner containerClassName={styles.spinner} /> : null
         }
       >
         Submit

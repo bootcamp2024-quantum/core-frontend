@@ -10,8 +10,8 @@ interface SpinnerProps {
 const Spinner = ({
   className = '',
   containerClassName = '',
-  size = 30,
-  borderWidth = 4,
+  size = 24,
+  borderWidth = 3,
 }: SpinnerProps) => {
   const containerStyle = size
     ? { width: `${size}px`, height: `${size}px` }

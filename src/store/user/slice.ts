@@ -48,20 +48,10 @@ export const userSlice = createSlice({
         state.error = action.payload!;
       })
       .addCase(login.pending, onPending)
-      .addCase(
-        register.fulfilled,
-        (
-          state: UserState,
-          action: PayloadAction<{ user: User; token: Token }>,
-        ) => {
-          state.user = action.payload.user;
-          state.token = action.payload.token;
-
-          state.isLoggedIn = true;
-          state.isLoading = false;
-          state.error = null;
-        },
-      )
+      .addCase(register.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
       .addCase(register.rejected, (state: UserState, action) => {
         state.isLoading = false;
         state.error = action.payload!;
