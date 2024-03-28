@@ -25,7 +25,7 @@ const AvatarInput = ({
         <input
           ref={fileInputRef}
           id="photo"
-          className={styles.photoInput}
+          className="sr-only"
           type="file"
           accept="image/*"
           onChange={handleAvatarChange}
@@ -37,13 +37,13 @@ const AvatarInput = ({
             alt="User avatar"
           />
         ) : (
-          <Icon id="user" className={styles.userIcon} />
+          <Icon id="user" boxStyles={styles.userIcon} size={100} />
         )}
       </div>
       <Button
         type="button"
-        variant="primary"
-        className={styles.customFileButton}
+        variant="secondary"
+        size="md"
         onClick={handleFileButtonClick}
         icon={<Icon id="upload" className={styles.uploadIcon} />}
       >
